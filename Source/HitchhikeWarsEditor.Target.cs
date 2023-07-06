@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class HitchhikeWarsEditorTarget : TargetRules
 {
-	public HitchhikeWarsEditorTarget( TargetInfo Target) : base(Target)
+	public HitchhikeWarsEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;

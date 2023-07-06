@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class HitchhikeWarsTarget : TargetRules
 {
-	public HitchhikeWarsTarget( TargetInfo Target) : base(Target)
+	public HitchhikeWarsTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
