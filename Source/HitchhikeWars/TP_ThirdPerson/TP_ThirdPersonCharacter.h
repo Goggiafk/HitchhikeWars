@@ -37,6 +37,10 @@ class ATP_ThirdPersonCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	//UPROPERTY(EditAnywhere, Category = "UI_HUD")
+	//	TSubclassOf<UUserWidget> Hud_Widget_Class;
+	//UUserWidget* Hud_Widget;
+
 public:
 	ATP_ThirdPersonCharacter();
 	
@@ -62,5 +66,6 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	
 };
 

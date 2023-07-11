@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -56,6 +57,12 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
+	//if(Hud_Widget_Class)
+	//{
+	//Hud_Widget_Class = CreateWidget(GetWorld(), Hud_Widget_Class);
+	//Hud_Widget->AddToViewport();
+	//}
+	
 	//Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
