@@ -21,7 +21,7 @@ void AHitchhikeWarsGameMode::BeginPlay()
 	Super::BeginPlay();
 	SpawnCar();
 	FTimerHandle UnusedHandle;
-	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(2, 5), true);
+	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(DelayRange.X, DelayRange.Y), true);
 }
 
 void AHitchhikeWarsGameMode::StartPlay()

@@ -14,6 +14,8 @@ class HITCHHIKEWARS_API ACar_Pawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ACar_Pawn();
+	UPROPERTY(EditAnywhere)
+	float CarSpeed;
 
 protected:
 	// Called when the game starts or when spawned
