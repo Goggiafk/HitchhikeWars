@@ -33,9 +33,6 @@ class AHitchhikeWarsGameMode : public AGameModeBase
 	UPROPERTY(EditAnywhere)
 	float Spawn_Y_Max;
 
-	UPROPERTY(EditAnywhere)
-	FVector2D DelayRange;
-
 	void SpawnCar();
 };
 

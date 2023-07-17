@@ -22,7 +22,7 @@ void ACar_Pawn::BeginPlay()
 void ACar_Pawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	position.Set(position.X + CarSpeed, position.Y, position.Z);
+	position.Set(position.X + 6, position.Y, position.Z);
 	SetActorLocation(position);
 }
 
