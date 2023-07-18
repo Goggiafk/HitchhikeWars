@@ -18,11 +18,16 @@ void ACar_Pawn::BeginPlay()
 		
 }
 
+void ACar_Pawn::SetPosition(FVector p)
+{
+	position = p;
+}
+
 // Called every frame
 void ACar_Pawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	position.Set(position.X + 6, position.Y, position.Z);
+	position.Set(position.X + speed, position.Y, position.Z);
 	SetActorLocation(position);
 }
 

@@ -21,7 +21,13 @@ protected:
 
 	FVector position;
 
-public:	
+public:
+		
+	UPROPERTY(EditAnywhere)
+	float speed;
+
+	void SetPosition(FVector p);
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

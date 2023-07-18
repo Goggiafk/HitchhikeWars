@@ -1,8 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "HitchhikeWarsGameMode.h"
-#include "HitchhikeWarsCharacter.h"
+#include "TP_ThirdPersonCharacter.generated.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Car_Pawn.h"
 
 AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 {
@@ -41,6 +42,14 @@ void AHitchhikeWarsGameMode::SpawnCar()
 
 	FVector SpawnPosition = FVector(RandX, RandY, Spawn_Z);
 	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 	
-	GetWorld()->SpawnActor(CarPrefab, &SpawnPosition, &SpawnRotation);
+	ACar_Pawn* car = GetWorld()->SpawnActor<ACar_Pawn>(CarPrefab, SpawnPosition, SpawnRotation, SpawnParams);
+	if(car)
+	{
+		car->SetPosition(SpawnPosition);
+		car->speed = FMath::RandRange(20, 30);
+	}
 }
