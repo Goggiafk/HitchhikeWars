@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Car_Pawn.generated.h"
 
 UCLASS()
@@ -20,8 +21,12 @@ protected:
 	virtual void BeginPlay() override;
 
 	FVector position;
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Mesh")
+	USkeletalMeshComponent* SkeletalMeshComponent;
 public:
+
+	UPROPERTY(EditAnywhere)
+	TArray<USkeletalMesh*> car_meshes;
 		
 	UPROPERTY(EditAnywhere)
 	float speed;

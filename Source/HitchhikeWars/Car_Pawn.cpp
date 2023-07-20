@@ -6,6 +6,7 @@
 // Sets default values
 ACar_Pawn::ACar_Pawn()
 {
+	SkeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMeshComponent"));
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	position = GetActorLocation();
@@ -15,7 +16,8 @@ ACar_Pawn::ACar_Pawn()
 void ACar_Pawn::BeginPlay()
 {
 	Super::BeginPlay();
-		
+	if(SkeletalMeshComponent)
+		SkeletalMeshComponent->SetSkeletalMesh(car_meshes[FMath::RandRange(0, car_meshes.Num()-1)]);
 }
 
 void ACar_Pawn::SetPosition(FVector p)

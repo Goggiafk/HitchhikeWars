@@ -9,23 +9,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Maps/Demonstration.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Maps/Demonstration.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Car_Prefab.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Car_Prefab.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/HUD_Widget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/HUD_Widget.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/TP_Blueprint.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Level_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsCharacter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsCharacter.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonGameMode.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +269,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689612167291</updated>
       <workItem from="1689612203181" duration="7048000" />
-      <workItem from="1689691003128" duration="4059000" />
+      <workItem from="1689691003128" duration="9181000" />
     </task>
     <servers />
   </component>
