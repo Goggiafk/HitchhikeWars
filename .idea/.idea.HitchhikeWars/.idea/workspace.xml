@@ -10,16 +10,111 @@
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Car_Prefab.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Car_Prefab.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/HUD_Widget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/HUD_Widget.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Level_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Maps/Demonstration.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Maps/Demonstration.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_05.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_05.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_06.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_06.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_07.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_07.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_08.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_08.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_09.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_09.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_10.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_10.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_11.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_11.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_12.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_12.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_13.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_13.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_14.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_14.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_15.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_15.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_16.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_16.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_05.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_05.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_06.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_06.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_07.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_07.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_08.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_08.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_09.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_09.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_10.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_10.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_11.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_11.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_12.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_12.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_13.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_13.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_14.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_14.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_15.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_15.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_16.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_16.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_17.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_17.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_18.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_18.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_19.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_19.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_20.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_20.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_21.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_21.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_22.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_22.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_23.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_23.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_24.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_24.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_25.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_25.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_26.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_26.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_27.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_27.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_28.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_28.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_29.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_29.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_30.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_30.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_31.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_male_31.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_deputy_sheriff_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_05.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_detective_05.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_farmer_male_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_03.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_04.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_federal_agent_04.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_priest_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_priest_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_priest_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_priest_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SkeletonCharacter.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/InteriorProps/House/SM_Basket_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/InteriorProps/House/SM_Basket_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Pistol_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Pistol_02.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Shotgun_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Shotgun_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Smg_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Weapons/SM_Smg_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Poses/A_characterPoses.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Poses/A_characterPoses.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/LowPolyMen/Animations/ABP_LowPoly.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/LowPolyMen/Animations/LP_Idle_Sequence.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/LowPolyMen/Animations/LP_Run.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SK_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SK_Mannequin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/HikeBanner.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/ABP_LowPoly.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/ABP_LowPolyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/ABP_LowPolyCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Run_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Run_Fwd.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Walk_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MF_Walk_Fwd.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Fall_Loop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Fall_Loop.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Jump.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Land.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Land.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Run_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Run_Fwd.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_T_Pose.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_T_Pose.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_WalkRun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_WalkRun.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_Fwd.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_InPlace.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_InPlace.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/LP_Idle_Sequence.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/LP_Idle_Sequence.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/LP_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/LP_Run.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/NewLevelSequence.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/HUD_Widget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD_Widget.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +364,14 @@
       <option name="presentableId" value="Default" />
       <updated>1689612167291</updated>
       <workItem from="1689612203181" duration="7048000" />
-      <workItem from="1689691003128" duration="9181000" />
+      <workItem from="1689691003128" duration="12173000" />
+      <workItem from="1689948134432" duration="2440000" />
+      <workItem from="1689980563029" duration="688000" />
+      <workItem from="1690015750174" duration="3701000" />
+      <workItem from="1690025359951" duration="604000" />
+      <workItem from="1690465703337" duration="7249000" />
+      <workItem from="1690568562053" duration="1500000" />
+      <workItem from="1690619136711" duration="2272000" />
     </task>
     <servers />
   </component>

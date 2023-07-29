@@ -5,7 +5,15 @@
 #include "CoreMinimal.h"
 #include "Car_Pawn.h"
 #include "GameFramework/GameModeBase.h"
+
+#pragma warning(push)
+#pragma warning(disable: 4996)
+#include "Steam/steam_api.h"
+#pragma warning(pop)
+
 #include "HitchhikeWarsGameMode.generated.h"
+
+#define RAW_APP_ID "2447630"
 
 UCLASS(minimalapi)
 class AHitchhikeWarsGameMode : public AGameModeBase
@@ -37,6 +45,9 @@ class AHitchhikeWarsGameMode : public AGameModeBase
 	int spawnDelay;
 
 	void SpawnCar();
+
+	static constexpr char* APP_ID = RAW_APP_ID;
+	CSteamID MyId;
 };
 
 

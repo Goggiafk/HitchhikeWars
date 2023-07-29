@@ -9,6 +9,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "HitchhikeWars/BulletActor.h"
+#include "Kismet/GameplayStatics.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -64,6 +66,23 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+	USkeletalMeshComponent* MeshComponent = GetMesh();
+	if(!MeshComponent)
+	{
+		return;
+	}
+
+	FTransform WeaponSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Weapon_Socket"));
+	FTransform BackpackSocketTransform = MeshComponent->GetSocketTransform(TEXT("spine_Backpack_Socket"));
+
+	AActor* SpawnedWeapon = GetWorld()->SpawnActor<AActor>(BP_Weapon, WeaponSocketTransform);
+	AActor* SpawnedBackpack = GetWorld()->SpawnActor<AActor>(BP_Backpack, BackpackSocketTransform);
+	
+	if(SpawnedWeapon)
+	{
+		SpawnedWeapon->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("hand_r_Weapon_Socket"));
+		SpawnedBackpack->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("spine_Backpack_Socket"));
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -71,9 +90,10 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 
 void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
+
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
+
 		//Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
@@ -81,9 +101,16 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ATP_ThirdPersonCharacter::Move);
 
+		//Aiming
+		InputComponent->BindAction("Aim", IE_Pressed, this, &ATP_ThirdPersonCharacter::Aim);
+		InputComponent->BindAction("Aim", IE_Released, this, &ATP_ThirdPersonCharacter::StopAim);
+		
+		InputComponent->BindAction("Shoot", IE_Pressed, this, &ATP_ThirdPersonCharacter::Shoot);
+
 	}
 
 }
+
 
 void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 {
@@ -108,6 +135,45 @@ void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
+void ATP_ThirdPersonCharacter::Shoot()
+{
+	if(bIsAimingState && BulletClass)
+	{
+		USkeletalMeshComponent* MeshComponent = GetMesh();
+
+		FTransform SocketTransform;
+		if(MeshComponent)
+		{
+			SocketTransform = MeshComponent->GetSocketTransform("hand_r_Weapon_Socket");
+		}
+
+		ABulletActor* Bullet = GetWorld()->SpawnActor<ABulletActor>(BulletClass, SocketTransform);
+
+		if(Bullet)
+		{
+			FVector ThrowDirection = GetFollowCamera()->GetForwardVector();
+
+			Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
+		}
+	}
+}
+
+void ATP_ThirdPersonCharacter::Aim()
+{
+	//if (HasAuthority())
+	//{
+		bIsAimingState = true;
+	//}
+}
+
+
+
+void ATP_ThirdPersonCharacter::StopAim()
+{
+	//if (HasAuthority())
+	//{
+	bIsAimingState = false;
+}
 
 
 

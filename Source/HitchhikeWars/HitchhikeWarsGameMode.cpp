@@ -20,6 +20,16 @@ AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 void AHitchhikeWarsGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FFileHelper::SaveStringToFile(TEXT(RAW_APP_ID), TEXT("steam_appid.txt"));
+
+	SteamAPI_RestartAppIfNecessary(atoi(APP_ID));
+
+	if(SteamAPI_Init())
+	{
+		MyId = SteamUser()->GetSteamID();
+	}
+	
 	SpawnCar();
 	FTimerHandle UnusedHandle;
 	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(1, spawnDelay), true);

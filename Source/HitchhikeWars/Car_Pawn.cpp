@@ -31,6 +31,10 @@ void ACar_Pawn::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	position.Set(position.X + speed, position.Y, position.Z);
 	SetActorLocation(position);
+	if(position.X > 6500.0f)
+	{
+		Destroy();
+	}
 }
 
 // Called to bind functionality to input
