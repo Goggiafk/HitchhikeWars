@@ -1,7 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "HitchhikeWarsGameMode.h"
-#include "TP_ThirdPersonCharacter.generated.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Car_Pawn.h"
 
@@ -20,15 +19,6 @@ AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 void AHitchhikeWarsGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-
-	FFileHelper::SaveStringToFile(TEXT(RAW_APP_ID), TEXT("steam_appid.txt"));
-
-	SteamAPI_RestartAppIfNecessary(atoi(APP_ID));
-
-	if(SteamAPI_Init())
-	{
-		MyId = SteamUser()->GetSteamID();
-	}
 	
 	SpawnCar();
 	FTimerHandle UnusedHandle;

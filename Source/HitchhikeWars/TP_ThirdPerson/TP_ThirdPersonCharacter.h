@@ -51,8 +51,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AnimationParameters)
 	bool bIsAimingState;
 
-	//UFUNCTION()
-	//void OnIsAiming();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UArrowComponent* MyArrowComponent;
 
 protected:
 	
@@ -80,6 +80,8 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	
+	FORCEINLINE class UArrowComponent* GetShootArrow() const { return MyArrowComponent; }
 
 	
 };

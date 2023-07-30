@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Components/ArrowComponent.h"
 #include "HitchhikeWars/BulletActor.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -49,6 +50,10 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	MyArrowComponent = CreateDefaultSubobject<UArrowComponent>(TEXT("MyArrowComponent"));
+	MyArrowComponent->SetupAttachment(RootComponent);
+	MyArrowComponent->ArrowSize = 2.0f;
+	MyArrowComponent->ArrowColor = FColor::Red; 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
@@ -141,19 +146,19 @@ void ATP_ThirdPersonCharacter::Shoot()
 	{
 		USkeletalMeshComponent* MeshComponent = GetMesh();
 
-		FTransform SocketTransform;
-		if(MeshComponent)
+		FTransform ArrowTransform;
+		if(MyArrowComponent)
 		{
-			SocketTransform = MeshComponent->GetSocketTransform("hand_r_Weapon_Socket");
+			ArrowTransform = GetShootArrow()->GetComponentTransform();
 		}
 
-		ABulletActor* Bullet = GetWorld()->SpawnActor<ABulletActor>(BulletClass, SocketTransform);
+		ABulletActor* Bullet = GetWorld()->SpawnActor<ABulletActor>(BulletClass, ArrowTransform);
 
 		if(Bullet)
 		{
-			FVector ThrowDirection = GetFollowCamera()->GetForwardVector();
+			//FVector ThrowDirection = GetShootArrow()->GetForwardVector();
 
-			Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
+			//Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
 		}
 	}
 }
