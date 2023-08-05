@@ -11,17 +11,19 @@
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP_Bullet.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_Bullet.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenuMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenuMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/OnlineSessions/BP_OnlineGameInstance_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/OnlineSessions/BP_OnlineGameInstance_2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/OnlineSessions/JoinSessionScreen.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/OnlineSessions/JoinSessionScreen.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/OnlineSessions/SessionResult_UI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/OnlineSessions/SessionResult_UI.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menugame_.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menugame_.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HitchhikeWars.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/HitchhikeWars.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" afterDir="false" />
     </list>
@@ -29,6 +31,15 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameInstance.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -282,7 +293,13 @@
       <workItem from="1690568562053" duration="1500000" />
       <workItem from="1690619136711" duration="3701000" />
       <workItem from="1690623786960" duration="5553000" />
-      <workItem from="1690706118350" duration="7622000" />
+      <workItem from="1690706118350" duration="31155000" />
+      <workItem from="1691238158511" duration="283000" />
+      <workItem from="1691238564124" duration="51000" />
+      <workItem from="1691238933091" duration="107000" />
+      <workItem from="1691239283637" duration="909000" />
+      <workItem from="1691240348803" duration="1438000" />
+      <workItem from="1691241863756" duration="101000" />
     </task>
     <servers />
   </component>

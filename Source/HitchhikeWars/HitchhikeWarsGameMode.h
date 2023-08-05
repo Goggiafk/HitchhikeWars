@@ -35,8 +35,22 @@ class AHitchhikeWarsGameMode : public AGameModeBase
 
 	UPROPERTY(EditAnywhere)
 	int spawnDelay;
+	
+
+	UPROPERTY(ReplicatedUsing = OnRep_SpawnCar)
+	FVector SpawnPosition;
+
+	UPROPERTY(ReplicatedUsing = OnRep_SpawnCar)
+	FRotator SpawnRotation;
 
 	void SpawnCar();
+	UFUNCTION(NetMulticast ,Reliable)
+	void SpawnCar_Multicast();
+
+	UFUNCTION()
+	void OnRep_SpawnCar();
+
+	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
 };
 
 

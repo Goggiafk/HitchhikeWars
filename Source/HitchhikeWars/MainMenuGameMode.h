@@ -12,7 +12,7 @@
 
 #include "MainMenuGameMode.generated.h"
 
-#define RAW_APP_ID "480"//"2447630"
+#define RAW_APP_ID "2447630"
 
 UCLASS()
 class HITCHHIKEWARS_API AMainMenuGameMode : public AGameModeBase

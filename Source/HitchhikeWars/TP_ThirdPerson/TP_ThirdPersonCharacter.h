@@ -48,23 +48,59 @@ class ATP_ThirdPersonCharacter : public ACharacter
 
 public:
 	ATP_ThirdPersonCharacter();
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AnimationParameters)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, ReplicatedUsing= OnRep_CurrentAimState, Category = AnimationParameters)
 	bool bIsAimingState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UArrowComponent* MyArrowComponent;
+	
+	void Aim();
+	void StopAim();
+	UFUNCTION(Server, Reliable)
+	void Aim_Server(bool state);
+	UFUNCTION(NetMulticast, Reliable)
+	void Aim_Multicast(bool state);
 
+	UFUNCTION()
+	void OnRep_CurrentAimState(bool state);
+	
+	void Shoot();
+	
+	UFUNCTION(Server, Reliable)
+	void Shoot_Server();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Shoot_Multicast();
+	
+	UPROPERTY(EditAnywhere)
+	TArray<USkeletalMesh*> character_meshes;
+	int current_mesh_id = 0;
+	
 protected:
+
+	USkeletalMeshComponent* CharacterMeshComponent;
+
+	UPROPERTY(ReplicatedUsing = OnRep_CurrentSkeletalMesh)
+	USkeletalMesh* CurrentSkeletalMesh;
+	
+	void SwitchCharacterRight();
+
+	void SwitchCharacterLeft();
+
+	// Replication function for the CurrentSkeletalMesh variable
+	UFUNCTION()
+	void OnRep_CurrentSkeletalMesh();
+
+	UFUNCTION(Server, Reliable)
+	void SwitchCharacter_Server(USkeletalMesh* NewMesh);
+
+	UFUNCTION(NetMulticast, Reliable, WithValidation)
+	void SwitchCharacter_Multicast(USkeletalMesh* NewMesh);
+
+	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
 	
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
-
-	//UFUNCTION(Server, Reliable)
-	void Aim();
-	//UFUNCTION(Server, Reliable)
-	void StopAim();
-
-	void Shoot();
 	
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

@@ -20,18 +20,39 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	FVector position;
+	
+	UPROPERTY(ReplicatedUsing = OnRep_SetPosition)
+	FVector CarPosition;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Mesh")
 	USkeletalMeshComponent* SkeletalMeshComponent;
+
+	UFUNCTION(NetMulticast, Reliable)
+	void SetUpCar_Multicast();
+
+	UFUNCTION()
+	void OnRep_SetUpCar();
+
+	UPROPERTY(ReplicatedUsing = OnRep_SetUpCar)
+	USkeletalMesh* CurrentCarMesh;
+
+	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
+	
 public:
 
 	UPROPERTY(EditAnywhere)
 	TArray<USkeletalMesh*> car_meshes;
 		
-	UPROPERTY(EditAnywhere)
-	float speed;
+	UPROPERTY(ReplicatedUsing = OnRep_SetUpCar)
+	float Speed;
+	
+	UFUNCTION(NetMulticast, Reliable)
+	void SetPosition_Multicast();
 
-	void SetPosition(FVector p);
+	UFUNCTION(NetMulticast, Reliable)
+	void SetUpPosition_Multicast(FVector p);
+	
+	UFUNCTION()
+	void OnRep_SetPosition();
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

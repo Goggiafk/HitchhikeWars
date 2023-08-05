@@ -3,6 +3,7 @@
 #include "HitchhikeWarsGameMode.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Car_Pawn.h"
+#include "Net/UnrealNetwork.h"
 
 AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 {
@@ -19,10 +20,9 @@ AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 void AHitchhikeWarsGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	
 	SpawnCar();
 	FTimerHandle UnusedHandle;
-	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(1, spawnDelay), true);
+	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(3, spawnDelay), true);
 }
 
 void AHitchhikeWarsGameMode::StartPlay()
@@ -37,19 +37,38 @@ void AHitchhikeWarsGameMode::Tick(float DeltaSeconds)
 
 void AHitchhikeWarsGameMode::SpawnCar()
 {
-	float RandX = FMath::RandRange(Spawn_X_Min, Spawn_X_Max);
-	float RandY = FMath::RandRange(Spawn_Y_Min, Spawn_Y_Max);
+	if(HasAuthority())
+	{
+		SpawnCar_Multicast();
+	}
+}
 
-	FVector SpawnPosition = FVector(RandX, RandY, Spawn_Z);
-	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+void AHitchhikeWarsGameMode::SpawnCar_Multicast_Implementation()
+{
+	float RandX = -4000;//FMath::RandRange(Spawn_X_Min, Spawn_X_Max);
+	float RandY = -550;//FMath::RandRange(Spawn_Y_Min, Spawn_Y_Max);
 
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	SpawnPosition = FVector(RandX, RandY, Spawn_Z);
+	SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
 	
-	ACar_Pawn* car = GetWorld()->SpawnActor<ACar_Pawn>(CarPrefab, SpawnPosition, SpawnRotation, SpawnParams);
+	OnRep_SpawnCar();
+}
+
+void AHitchhikeWarsGameMode::OnRep_SpawnCar()
+{
+	FActorSpawnParameters SpawnParameter;
+	SpawnParameter.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+	ACar_Pawn* car = GetWorld()->SpawnActor<ACar_Pawn>(CarPrefab, SpawnPosition, SpawnRotation, SpawnParameter);
 	if(car)
 	{
-		car->SetPosition(SpawnPosition);
-		car->speed = FMath::RandRange(20, 30);
+		car->SetUpPosition_Multicast(SpawnPosition);
 	}
+}
+
+void AHitchhikeWarsGameMode::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AHitchhikeWarsGameMode, SpawnPosition);
+	DOREPLIFETIME(AHitchhikeWarsGameMode, SpawnRotation);
 }

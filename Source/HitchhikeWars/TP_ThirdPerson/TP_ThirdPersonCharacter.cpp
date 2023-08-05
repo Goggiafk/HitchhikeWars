@@ -12,6 +12,7 @@
 #include "Components/ArrowComponent.h"
 #include "HitchhikeWars/BulletActor.h"
 #include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -56,21 +57,16 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	MyArrowComponent->ArrowColor = FColor::Red; 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+
+	CurrentSkeletalMesh = GetMesh()->GetSkeletalMeshAsset();
 }
 
 void ATP_ThirdPersonCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-	
-	//Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			Subsystem->AddMappingContext(DefaultMappingContext, 0);
-		}
-	}
+
 	USkeletalMeshComponent* MeshComponent = GetMesh();
 	if(!MeshComponent)
 	{
@@ -87,6 +83,15 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	{
 		SpawnedWeapon->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("hand_r_Weapon_Socket"));
 		SpawnedBackpack->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("spine_Backpack_Socket"));
+	}
+	
+	//Add Input Mapping Context
+	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		{
+			Subsystem->AddMappingContext(DefaultMappingContext, 0);
+		}
 	}
 }
 
@@ -111,11 +116,77 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 		InputComponent->BindAction("Aim", IE_Released, this, &ATP_ThirdPersonCharacter::StopAim);
 		
 		InputComponent->BindAction("Shoot", IE_Pressed, this, &ATP_ThirdPersonCharacter::Shoot);
-
+		InputComponent->BindAction("SwitchCharacterRight", IE_Pressed, this, &ATP_ThirdPersonCharacter::SwitchCharacterRight);
+		InputComponent->BindAction("SwitchCharacterLeft", IE_Pressed, this, &ATP_ThirdPersonCharacter::SwitchCharacterLeft);
+		
 	}
 
 }
 
+void ATP_ThirdPersonCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	// Replicate the CurrentSkeletalMesh variable
+	DOREPLIFETIME(ATP_ThirdPersonCharacter, CurrentSkeletalMesh);
+}
+
+void ATP_ThirdPersonCharacter::OnRep_CurrentSkeletalMesh()
+{
+	if (CurrentSkeletalMesh)
+	{
+		GetMesh()->SetSkeletalMesh(CurrentSkeletalMesh);
+	}
+}
+
+
+void ATP_ThirdPersonCharacter::SwitchCharacterRight()
+{
+	if(CharacterMeshComponent)
+	{
+		current_mesh_id++;
+		if(current_mesh_id >= character_meshes.Num())
+		{
+			current_mesh_id = 0;
+		}
+		//CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
+		SwitchCharacter_Server(character_meshes[current_mesh_id]);
+	}
+	
+}
+
+void ATP_ThirdPersonCharacter::SwitchCharacterLeft()
+{
+	if(CharacterMeshComponent)
+	{
+		current_mesh_id--;
+		if(current_mesh_id < 0)
+		{
+			current_mesh_id = character_meshes.Num()-1;
+		}
+	}
+	//CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
+	SwitchCharacter_Server(character_meshes[current_mesh_id]);
+}
+
+
+void ATP_ThirdPersonCharacter::SwitchCharacter_Server_Implementation(USkeletalMesh* NewMesh)
+{
+	SwitchCharacter_Multicast(NewMesh);
+}
+
+
+void ATP_ThirdPersonCharacter::SwitchCharacter_Multicast_Implementation(USkeletalMesh* NewMesh)
+{
+	CurrentSkeletalMesh = NewMesh;
+
+	OnRep_CurrentSkeletalMesh();
+}
+
+bool ATP_ThirdPersonCharacter::SwitchCharacter_Multicast_Validate(USkeletalMesh* NewMesh)
+{
+	return true;
+}
 
 void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 {
@@ -144,40 +215,65 @@ void ATP_ThirdPersonCharacter::Shoot()
 {
 	if(bIsAimingState && BulletClass)
 	{
-		USkeletalMeshComponent* MeshComponent = GetMesh();
+		Shoot_Server();
+	}
+}
 
-		FTransform ArrowTransform;
-		if(MyArrowComponent)
-		{
-			ArrowTransform = GetShootArrow()->GetComponentTransform();
-		}
+void ATP_ThirdPersonCharacter::Shoot_Server_Implementation()
+{
+	Shoot_Multicast();
+}
 
-		ABulletActor* Bullet = GetWorld()->SpawnActor<ABulletActor>(BulletClass, ArrowTransform);
+void ATP_ThirdPersonCharacter::Shoot_Multicast_Implementation()
+{
+	CharacterMeshComponent = GetMesh();
 
-		if(Bullet)
-		{
-			//FVector ThrowDirection = GetShootArrow()->GetForwardVector();
+	if(CharacterMeshComponent)
+	{
+		CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
+	}
+		
+	FTransform ArrowTransform;
+	if(MyArrowComponent)
+	{
+		ArrowTransform = GetShootArrow()->GetComponentTransform();
+	}
 
-			//Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
-		}
+	ABulletActor* Bullet = GetWorld()->SpawnActor<ABulletActor>(BulletClass, ArrowTransform);
+
+	if(Bullet)
+	{
+		//FVector ThrowDirection = GetShootArrow()->GetForwardVector();
+
+		//Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
 	}
 }
 
 void ATP_ThirdPersonCharacter::Aim()
 {
-	//if (HasAuthority())
-	//{
-		bIsAimingState = true;
-	//}
+	Aim_Server(true);
 }
-
 
 
 void ATP_ThirdPersonCharacter::StopAim()
 {
-	//if (HasAuthority())
-	//{
-	bIsAimingState = false;
+	Aim_Server(false);
+}
+
+
+void ATP_ThirdPersonCharacter::Aim_Server_Implementation(bool state)
+{
+	Aim_Multicast(state);
+}
+
+void ATP_ThirdPersonCharacter::Aim_Multicast_Implementation(bool state)
+{
+	OnRep_CurrentAimState(state);
+}
+
+void ATP_ThirdPersonCharacter::OnRep_CurrentAimState(bool state)
+{
+	bIsAimingState = state;
 }
 
 

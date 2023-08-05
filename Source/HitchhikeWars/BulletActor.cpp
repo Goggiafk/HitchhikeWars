@@ -20,7 +20,7 @@ ABulletActor::ABulletActor()
 	ProjectileMovement->InitialSpeed = 2000;
 	ProjectileMovement->MaxSpeed = 2000;
 	ProjectileMovement->ProjectileGravityScale = 0;
-	ProjectileMovement->bRotationFollowsVelocity = true;
+	ProjectileMovement->bRotationFollowsVelocity = true;  
 
 	SphereComponent->OnComponentHit.AddDynamic(this, &ABulletActor::OnProjectileHit);
 
@@ -32,11 +32,7 @@ void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* Ot
 	UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	ATP_ThirdPersonCharacter* MyCharacter = Cast<ATP_ThirdPersonCharacter>(OtherActor);
-	if (MyCharacter)
-	{
-		// Cast successful. Use the BP_ThirdPerson functionality here.
-	}
-	else if (OtherActor && OtherActor != this)
+	if (!MyCharacter && OtherActor && OtherActor != this)
 	{
 		if(ImpactEffect)
 		{
@@ -49,10 +45,11 @@ void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* Ot
 		}
 
 		OtherActor->Destroy();
-
-		Destroy();
 	}
+	Destroy();
 }
+
+
 
 
 
