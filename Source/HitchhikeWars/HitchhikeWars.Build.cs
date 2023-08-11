@@ -9,7 +9,7 @@ public class HitchhikeWars : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput", "AssetRegistry", "OnlineSubsystem", "OnlineSubsystemSteam" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput", "AssetRegistry", "OnlineSubsystem", "OnlineSubsystemSteam", "UMG" });
 		
 		PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "steam", "lib", "steam_api64.lib"));
 	}

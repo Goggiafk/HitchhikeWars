@@ -23,6 +23,12 @@ protected:
 	UFUNCTION()
 	void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
+	UFUNCTION(Server, Reliable)
+	void BulletHit_Server(AActor* OtherActor, const FHitResult& Hit);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void BulletHit_Multicast(AActor* OtherActor, const FHitResult& Hit);
+
 	UPROPERTY(EditDefaultsOnly)
 	UParticleSystem* ImpactEffect;
 

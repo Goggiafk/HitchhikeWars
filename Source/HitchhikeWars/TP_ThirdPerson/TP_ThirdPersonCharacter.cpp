@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
 #include "Components/ArrowComponent.h"
 #include "HitchhikeWars/BulletActor.h"
 #include "Kismet/GameplayStatics.h"
@@ -58,7 +59,6 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-
 	CurrentSkeletalMesh = GetMesh()->GetSkeletalMeshAsset();
 }
 
@@ -71,6 +71,12 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	if(!MeshComponent)
 	{
 		return;
+	}
+	CharacterMeshComponent = GetMesh();
+
+	if(CharacterMeshComponent)
+	{
+		CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
 	}
 
 	FTransform WeaponSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Weapon_Socket"));
@@ -91,6 +97,15 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
+		}
+	}
+
+	if (WidgetClass)
+	{
+		WidgetInstance = CreateWidget<UUserWidget>(GetWorld(), WidgetClass);
+		if (WidgetInstance)
+		{
+			WidgetInstance->AddToViewport();
 		}
 	}
 }
@@ -142,6 +157,7 @@ void ATP_ThirdPersonCharacter::OnRep_CurrentSkeletalMesh()
 
 void ATP_ThirdPersonCharacter::SwitchCharacterRight()
 {
+	
 	if(CharacterMeshComponent)
 	{
 		current_mesh_id++;
@@ -226,13 +242,6 @@ void ATP_ThirdPersonCharacter::Shoot_Server_Implementation()
 
 void ATP_ThirdPersonCharacter::Shoot_Multicast_Implementation()
 {
-	CharacterMeshComponent = GetMesh();
-
-	if(CharacterMeshComponent)
-	{
-		CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
-	}
-		
 	FTransform ArrowTransform;
 	if(MyArrowComponent)
 	{

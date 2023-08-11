@@ -11,18 +11,20 @@ UCLASS()
 class HITCHHIKEWARS_API ACar_Pawn : public APawn
 {
 	GENERATED_BODY()
-
 public:
-	// Sets default values for this pawn's properties
 	ACar_Pawn();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UFUNCTION(NetMulticast, Reliable)
+	void SetUpPosition_Multicast(FVector p);
 
-	
+protected:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	UPROPERTY(ReplicatedUsing = OnRep_SetPosition)
-	FVector CarPosition;
+	FVector Position;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Mesh")
 	USkeletalMeshComponent* SkeletalMeshComponent;
 
@@ -36,28 +38,18 @@ protected:
 	USkeletalMesh* CurrentCarMesh;
 
 	virtual void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
-	
-public:
 
-	UPROPERTY(EditAnywhere)
-	TArray<USkeletalMesh*> car_meshes;
-		
-	UPROPERTY(ReplicatedUsing = OnRep_SetUpCar)
-	float Speed;
-	
 	UFUNCTION(NetMulticast, Reliable)
 	void SetPosition_Multicast();
 
-	UFUNCTION(NetMulticast, Reliable)
-	void SetUpPosition_Multicast(FVector p);
-	
 	UFUNCTION()
 	void OnRep_SetPosition();
+
+private:
+	UPROPERTY(EditAnywhere, Category = "Car Parameters")
+	TArray<USkeletalMesh*> CarMeshes;
 	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	UPROPERTY(ReplicatedUsing = OnRep_SetUpCar)
+	float Speed;
 };
+

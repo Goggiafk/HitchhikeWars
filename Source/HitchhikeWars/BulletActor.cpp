@@ -49,6 +49,15 @@ void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* Ot
 	Destroy();
 }
 
+void ABulletActor::BulletHit_Server_Implementation(AActor* OtherActor, const FHitResult& Hit)
+{
+	BulletHit_Multicast_Implementation(OtherActor, Hit);
+}
+
+void ABulletActor::BulletHit_Multicast_Implementation(AActor* OtherActor, const FHitResult& Hit)
+{
+	
+}
 
 
 
