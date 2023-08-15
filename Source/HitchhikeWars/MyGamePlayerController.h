@@ -3,6 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AdvancedFriendsGameInstance.h"
+#include "CustomGameInstance.h"
+#include "InventoryComponent.h"
+#include "InventoryWidget.h"
 #include "GameFramework/PlayerController.h"
 #include "Blueprint/UserWidget.h"
 #include "MyGamePlayerController.generated.h"
@@ -18,6 +22,16 @@ class HITCHHIKEWARS_API AMyGamePlayerController : public APlayerController
  public:
 	AMyGamePlayerController();
 
+	UInventoryComponent* InventoryComponent;
+	
+	//items
+	UPROPERTY(EditAnywhere, Category = "Starter Items")
+	TSoftObjectPtr<UInventoryItem> Rifle;
+	
+	UPROPERTY(EditAnywhere, Category = "Starter Items")
+	TSoftObjectPtr<UInventoryItem> Bullets;
+	
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -29,12 +43,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
 	TSubclassOf<UUserWidget> MapWidgetClass;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+	TSubclassOf<UUserWidget> InventoryWidgetClass;
+	
+
 	// Widget Instances
 	UPROPERTY()
 	UUserWidget* InGameMenuWidget;
 
 	UPROPERTY()
 	UUserWidget* MapWidget;
+
+	UPROPERTY()
+	UUserWidget* InventoryWidget;
 
 	// Widget States
 	UPROPERTY()
@@ -43,9 +64,16 @@ protected:
 	UPROPERTY()
 	bool IsMapOpen = false;
 
+	UPROPERTY()
+	bool IsInventoryOpen = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool IsAnyWidgetOpen = false;
+	
 	// Input Actions
 	void ToggleInGameMenu();
 	void ToggleInGameMap();
+	void ToggleInGameInventory();
 
 	// Toggle Widget Function
 	UFUNCTION(BlueprintCallable, Category = "Widgets")

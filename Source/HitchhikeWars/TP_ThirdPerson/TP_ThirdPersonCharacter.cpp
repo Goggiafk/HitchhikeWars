@@ -12,6 +12,8 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/ArrowComponent.h"
 #include "HitchhikeWars/BulletActor.h"
+#include "HitchhikeWars/Gamemanager.h"
+#include "HitchhikeWars/MyGamePlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -67,6 +69,16 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
+	//UInventoryComponent* InventoryComponent = ;
+
+	if(Cast<AMyGamePlayerController>(GetLocalViewingPlayerController())->InventoryComponent)
+	{
+		UInventoryItem* TestItem = NewObject<UInventoryItem>();
+		TestItem->Name = "Sex2";
+		TestItem->Quantity = 1;
+		Cast<AMyGamePlayerController>(GetLocalViewingPlayerController())->InventoryComponent->AddItem(TestItem);
+	}
+	
 	USkeletalMeshComponent* MeshComponent = GetMesh();
 	if(!MeshComponent)
 	{

@@ -7,6 +7,7 @@
 #pragma warning(disable: 4996)
 #include "SteamAchievementManager.h"
 #pragma warning(pop)
+#include "InventoryComponent.h"
 #include "GameFramework/Actor.h"
 #include "GameManager.generated.h"
 
@@ -23,6 +24,9 @@ public:
 	// Access to SteamAchievementManager functionality
 	UPROPERTY()
 	USteamAchievementManager* SteamAchievementManager;
+	UPROPERTY()
+	UInventoryComponent* InventoryComponent;
 
 	void InitializeSteamAchievementManager();
+	void InitializeInventoryComponent();
 };

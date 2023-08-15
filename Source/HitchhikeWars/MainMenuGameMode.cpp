@@ -26,7 +26,6 @@ void AMainMenuGameMode::BeginPlay()
 	AGameManager* GameManager = AGameManager::GetInstance();
 	if (GameManager)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GameManager"));
 		GameManager->InitializeSteamAchievementManager();
 
 		if (GameManager->SteamAchievementManager)

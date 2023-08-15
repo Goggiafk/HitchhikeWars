@@ -30,3 +30,8 @@ void AGameManager::InitializeSteamAchievementManager()
 	SteamAchievementManager = NewObject<USteamAchievementManager>(this);
 }
 
+void AGameManager::InitializeInventoryComponent()
+{
+	InventoryComponent = NewObject<UInventoryComponent>(this);
+}
+

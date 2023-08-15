@@ -7,6 +7,7 @@ public class HitchhikeWars : ModuleRules
 {
 	public HitchhikeWars(ReadOnlyTargetRules Target) : base(Target)
 	{
+		PrivateDependencyModuleNames.AddRange(new string[] { "AdvancedSessions" });
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput", "AssetRegistry", "OnlineSubsystem", "OnlineSubsystemSteam", "UMG" });
