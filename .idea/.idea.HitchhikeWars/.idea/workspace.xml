@@ -9,36 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_Backpack.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_Bullet.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_HikeBanner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_HikeBanner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_NPC_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_NPC_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP_Weapon.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Car_Prefab.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/HitchhikeWars_GM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LocationEnter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LocationEnter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LowPoly_IQ.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ManequenToLowPoly.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Manequen_IQ.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP_HitchhikeWarsGameInstance.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/OnlineSessions/BP_OnlineGameInstance_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/OnlineSessions/BP_OnlineGameInstance_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/Bullets.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/InventoryItemWidget_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/InventoryItemWidget_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/MyGamePlayerController_BP.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/AdvancedSessions.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/AdvancedSessions/Source/AdvancedSessions/AdvancedSessions.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MainMenuGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/OnlineSessions/SessionResult_UI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/OnlineSessions/SessionResult_UI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,18 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C++ Project.HitchhikeWars">
     <configuration name="HitchhikeWars" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -326,7 +301,7 @@
       <workItem from="1691846405942" duration="8326000" />
       <workItem from="1692030040344" duration="34450000" />
       <workItem from="1692285668530" duration="5802000" />
-      <workItem from="1692306216712" duration="834000" />
+      <workItem from="1692306216712" duration="39779000" />
     </task>
     <servers />
   </component>

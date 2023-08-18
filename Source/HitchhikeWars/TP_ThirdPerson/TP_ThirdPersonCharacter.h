@@ -5,16 +5,29 @@
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "Blueprint/UserWidget.h"
+#include "HitchhikeWars/InventoryComponent.h"
 #include "TP_ThirdPersonCharacter.generated.h"
 
 UCLASS(config=Game)
 class ATP_ThirdPersonCharacter : public ACharacter
 {
 	GENERATED_BODY()
+	
+	//void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	//									   UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 public:
 	ATP_ThirdPersonCharacter();
 
+	UInventoryComponent* InventoryComponent;
+
+	void SetRifle();
+	UFUNCTION(Server, Reliable)
+	void SetRifle_Server();
+	UFUNCTION(NetMulticast, Reliable)
+	void SetRifler_Multicast();
+	
 	// Camera Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;

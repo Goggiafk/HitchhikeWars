@@ -42,6 +42,51 @@ bool UInventoryComponent::RemoveItem(UInventoryItem* ItemToRemove)
 	return false;
 }
 
+bool UInventoryComponent::DecreaseItemByType(EItemType Type)
+{
+	for (UInventoryItem* Item : InventoryItems)
+	{
+		if (Item && Item->Type == Type)
+		{
+			Item->Quantity--;
+			if(Item->Quantity <= 0)
+			{
+				RemoveItem(Item);
+			}
+			return true;
+		}
+	}
+
+	return false;
+}
+
+UInventoryItem* UInventoryComponent::GetItemByType(EItemType Type)
+{
+	for (UInventoryItem* Item : InventoryItems)
+	{
+		if (Item && Item->Type == Type)
+		{
+			return Item;
+		}
+	}
+
+	return nullptr;
+}
+
+bool UInventoryComponent::IfItemExists(EItemType Type)
+{
+	for (UInventoryItem* Item : InventoryItems)
+	{
+		if (Item && Item->Type == Type)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 TArray<UInventoryItem*> UInventoryComponent::GetInventoryItems() const
 {
 	return InventoryItems;

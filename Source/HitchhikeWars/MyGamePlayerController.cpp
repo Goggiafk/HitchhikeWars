@@ -3,12 +3,14 @@
 
 #include "MyGamePlayerController.h"
 
-#include "AdvancedFriendsGameInstance.h"
-#include "CustomGameInstance.h"
 #include "GameManager.h"
 #include "InventoryComponent.h"
+#include "InventoryItem.h"
 #include "InventoryWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
+#include "Steam/steam_api.h"
+#include "TP_ThirdPerson/TP_ThirdPersonCharacter.h"
 
 AMyGamePlayerController::AMyGamePlayerController()
 {
@@ -19,21 +21,25 @@ AMyGamePlayerController::AMyGamePlayerController()
 void AMyGamePlayerController::BeginPlay()
 {
  	Super::BeginPlay();
-	if (InventoryComponent)
-	{
-		//InventoryComponent = CustomGameInstance->SharedInventoryComponent;
-		//InventoryComponent = CustomGameInstance->SharedInventoryComponent;
-		//UInventoryItem* RifleI = Cast<UInventoryItem>(Rifle.LoadSynchronous());
-		//UInventoryItem* BulletsI = Cast<UInventoryItem>(Bullets.LoadSynchronous());
-		UInventoryItem* TestItem = NewObject<UInventoryItem>();
-		TestItem->Name = "Sex";
-		TestItem->Quantity = 1;
-		//TestItem->Icon = LoadObject<Tex>();
-		
-		//InventoryComponent->AddItem(Rifle.LoadSynchronous());
-		//InventoryComponent->AddItem(Bullets.LoadSynchronous());
-		InventoryComponent->AddItem(TestItem);
-	}
+
+	// if(SteamAPI_Init())
+	// {
+	// 	MyId = SteamUser()->GetSteamID();
+	// }
+	//
+	// AGameManager* GameManager = AGameManager::GetInstance();
+	// if (GameManager)
+	// {
+	// 	GameManager->InitializeSteamAchievementManager();
+	//
+	// 	if (GameManager->SteamAchievementManager)
+	// 	{
+	// 		GameManager->SteamAchievementManager->InitSteamAPI();
+	// 		GameManager->SteamAchievementManager->UnlockAchievement(TEXT("LogIn_1"));
+	// 		//bool bUnlocked = GameManager->SteamAchievementManager->IsAchievementUnlocked(TEXT("LogIn_1"));
+	// 		//GameManager->SteamAchievementManager->ShutdownSteamAPI();
+	// 	}
+	// }
 	
 	SetInputMode(FInputModeGameAndUI());
  }
@@ -63,6 +69,14 @@ void AMyGamePlayerController::ToggleInGameMap()
 	}
 }
 
+void AMyGamePlayerController::ToggleInventory(bool DetectIfOpen)
+{
+	//ToggleInGameInventory();
+	bShowMouseCursor = false;
+	InventoryWidget->RemoveFromParent();
+}
+
+
 void AMyGamePlayerController::ToggleInGameInventory()
 {
 	if(InventoryWidgetClass && !IsAnyWidgetOpen && InventoryComponent)
@@ -71,21 +85,8 @@ void AMyGamePlayerController::ToggleInGameInventory()
 		// TestItem->Name = "Sex";
 		// TestItem->Quantity = 1;
 		// InventoryComponent->AddItem(TestItem);
-		
-		TArray<UInventoryItem*> InventoryItems = InventoryComponent->GetInventoryItems(); // Assuming you have a function to get inventory items
-		for (int32 Index = 0; Index < InventoryItems.Num(); ++Index)
-		{
-			if (InventoryItems[Index])
-			{
-				FString ItemName = InventoryItems[Index]->Name;
-				UE_LOG(LogTemp, Warning, TEXT("Inventory Item at index %d has ItemName: %s"), Index, *ItemName);
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Null item at index %d"), Index);
-			}
-		}
-	
+		TArray<UInventoryItem*> InventoryItems = Cast<ATP_ThirdPersonCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->InventoryComponent->GetInventoryItems(); // Assuming you have a function to get inventory items
+
 		ToggleWidget(InventoryWidget, InventoryWidgetClass, IsInventoryOpen);
 
 		UInventoryWidget* InventoryWidgetInv = Cast<UInventoryWidget>(InventoryWidget);

@@ -12,12 +12,16 @@ class HITCHHIKEWARS_API UInventoryComponent : public UActorComponent
 
 public:
 	UInventoryComponent();
-
-	UFUNCTION(BlueprintCallable)
+	
 	bool AddItem(UInventoryItem* ItemToAdd);
-
-	UFUNCTION(BlueprintCallable)
+	
 	bool RemoveItem(UInventoryItem* ItemToRemove);
+
+	bool DecreaseItemByType(EItemType Type);
+
+	UInventoryItem* GetItemByType(EItemType Type);
+
+	bool IfItemExists(EItemType Type);
 
 	UFUNCTION(BlueprintCallable)
 	TArray<UInventoryItem*> GetInventoryItems() const;

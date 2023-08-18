@@ -11,9 +11,10 @@
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/ArrowComponent.h"
+#include "GameFramework/GameSession.h"
 #include "HitchhikeWars/BulletActor.h"
-#include "HitchhikeWars/Gamemanager.h"
 #include "HitchhikeWars/MyGamePlayerController.h"
+#include "HitchhikeWars/PickupActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -25,7 +26,8 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(10.0f, 96.0f);
-		
+	//GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATP_ThirdPersonCharacter::OnOverlapBegin);
+	
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -62,22 +64,13 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
 	CurrentSkeletalMesh = GetMesh()->GetSkeletalMeshAsset();
+	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
 }
 
 void ATP_ThirdPersonCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-
-	//UInventoryComponent* InventoryComponent = ;
-
-	if(Cast<AMyGamePlayerController>(GetLocalViewingPlayerController())->InventoryComponent)
-	{
-		UInventoryItem* TestItem = NewObject<UInventoryItem>();
-		TestItem->Name = "Sex2";
-		TestItem->Quantity = 1;
-		Cast<AMyGamePlayerController>(GetLocalViewingPlayerController())->InventoryComponent->AddItem(TestItem);
-	}
 	
 	USkeletalMeshComponent* MeshComponent = GetMesh();
 	if(!MeshComponent)
@@ -90,16 +83,13 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	{
 		CharacterMeshComponent->SetSkeletalMesh(character_meshes[current_mesh_id]);
 	}
-
-	FTransform WeaponSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Weapon_Socket"));
+	
 	FTransform BackpackSocketTransform = MeshComponent->GetSocketTransform(TEXT("spine_Backpack_Socket"));
 
-	AActor* SpawnedWeapon = GetWorld()->SpawnActor<AActor>(BP_Weapon, WeaponSocketTransform);
 	AActor* SpawnedBackpack = GetWorld()->SpawnActor<AActor>(BP_Backpack, BackpackSocketTransform);
 	
-	if(SpawnedWeapon)
+	if(SpawnedBackpack)
 	{
-		SpawnedWeapon->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("hand_r_Weapon_Socket"));
 		SpawnedBackpack->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("spine_Backpack_Socket"));
 	}
 	
@@ -121,6 +111,68 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		}
 	}
 }
+
+void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+	
+	//UE_LOG(LogTemp, Warning, TEXT("Other object's name: %s"), OtherActor->Tags[0]);
+	if (OtherActor && OtherActor->IsA(APickupActor::StaticClass()))
+	{
+		auto PickableItem = Cast<APickupActor>(OtherActor);
+		
+		if(PickableItem)
+		{
+			UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
+			ItemToAdd->Name = PickableItem->ItemName;
+			ItemToAdd->Quantity = PickableItem->ItemQuantity;
+			ItemToAdd->Icon = PickableItem->ItemIcon;
+			ItemToAdd->Type = PickableItem->ItemType;
+
+			//auto InventoryComponent = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->InventoryComponent;
+			if(InventoryComponent)
+			{
+				InventoryComponent->AddItem(ItemToAdd);
+				//Controller->ToggleInventory(true);
+			}
+			if(!PickableItem->IsInfinite)
+			{
+				OtherActor->Destroy();
+			}
+		}
+	}
+	//OtherActor->Destroy();
+}
+
+// void ATP_ThirdPersonCharacter::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp,
+// bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+// {
+// 	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+//
+// 	if (Other && Other->ActorHasTag(FName(TEXT("Pickable"))))
+// 	{
+// 		auto PickableItem = Cast<APickupActor>(Other);
+// 		if(PickableItem)
+// 		{
+// 			UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
+// 			ItemToAdd->Name = PickableItem->ItemName;
+// 			ItemToAdd->Quantity = PickableItem->ItemQuantity;
+// 			ItemToAdd->Icon = PickableItem->ItemIcon;
+//
+// 			auto InventoryComponent = Cast<AMyGamePlayerController>(Controller)->InventoryComponent;
+// 			if(InventoryComponent)
+// 			{
+// 				InventoryComponent->AddItem(ItemToAdd);
+// 				//Controller->ToggleInventory(true);
+// 			}
+// 			if(!PickableItem->IsInfinite)
+// 			{
+// 				Other->Destroy();
+// 			}
+// 		}
+// 	}
+// 	Other->Destroy();
+// }
 
 //////////////////////////////////////////////////////////////////////////
 // Input
@@ -147,7 +199,33 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 		InputComponent->BindAction("SwitchCharacterLeft", IE_Pressed, this, &ATP_ThirdPersonCharacter::SwitchCharacterLeft);
 		
 	}
+}
 
+void ATP_ThirdPersonCharacter::SetRifle()
+{
+	SetRifle_Server();
+}
+
+void ATP_ThirdPersonCharacter::SetRifle_Server_Implementation()
+{
+	SetRifler_Multicast();
+}
+
+void ATP_ThirdPersonCharacter::SetRifler_Multicast_Implementation()
+{
+	USkeletalMeshComponent* MeshComponent = GetMesh();
+	if(!MeshComponent)
+	{
+		return;
+	}
+
+	FTransform WeaponSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Weapon_Socket"));
+	AActor* SpawnedWeapon = GetWorld()->SpawnActor<AActor>(BP_Weapon, WeaponSocketTransform);
+	
+	if(SpawnedWeapon)
+	{
+		SpawnedWeapon->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("hand_r_Weapon_Socket"));
+	}
 }
 
 void ATP_ThirdPersonCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
@@ -169,7 +247,6 @@ void ATP_ThirdPersonCharacter::OnRep_CurrentSkeletalMesh()
 
 void ATP_ThirdPersonCharacter::SwitchCharacterRight()
 {
-	
 	if(CharacterMeshComponent)
 	{
 		current_mesh_id++;
@@ -241,9 +318,13 @@ void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 
 void ATP_ThirdPersonCharacter::Shoot()
 {
-	if(bIsAimingState && BulletClass)
-	{
-		Shoot_Server();
+	//UInventoryComponent* invComp = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(this, 0))->InventoryComponent;
+	if(InventoryComponent->IfItemExists(EItemType::Rifle)){
+		if(InventoryComponent && InventoryComponent->IfItemExists(EItemType::Bullets) && bIsAimingState && BulletClass)
+		{
+			InventoryComponent->DecreaseItemByType(EItemType::Bullets);
+			Shoot_Server();
+		}
 	}
 }
 
