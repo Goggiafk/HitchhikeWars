@@ -22,6 +22,15 @@ void USteamAchievementManager::UnlockAchievement(const FString& AchievementName)
 	}
 }
 
+void USteamAchievementManager::RemoveAchievement(const FString& AchievementName)
+{
+	if (SteamUserStats())
+	{
+		SteamUserStats()->ClearAchievement(TCHAR_TO_UTF8(*AchievementName));
+		SteamUserStats()->StoreStats();
+	}
+}
+
 bool USteamAchievementManager::IsAchievementUnlocked(const FString& AchievementName)
 {
 	bool bAchievementUnlocked = false;

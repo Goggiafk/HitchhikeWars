@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "Blueprint/UserWidget.h"
+#include "HitchhikeWars/HudWidget.h"
 #include "HitchhikeWars/InventoryComponent.h"
 #include "TP_ThirdPersonCharacter.generated.h"
 
@@ -21,8 +22,32 @@ public:
 	ATP_ThirdPersonCharacter();
 
 	UInventoryComponent* InventoryComponent;
+	void TakeHealthDamage(float DamageAmount);
 
 	void SetRifle();
+	
+protected:
+
+	UFUNCTION(Server, Reliable)
+	void TakeHealthDamage_Server(float DamageAmount);
+	UFUNCTION(NetMulticast, Reliable)
+	void TakeHealthDamage_Multicast(float DamageAmount);
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float MaxHealth = 100.0f;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	float CurrentHealth;
+
+	UPROPERTY(ReplicatedUsing = OnRep_IsDead)
+	bool bIsDead;
+
+	UFUNCTION()
+	void OnRep_IsDead();
+
+	//UFUNCTION(BlueprintImplementableEvent)
+	void OnDeath();
+	
 	UFUNCTION(Server, Reliable)
 	void SetRifle_Server();
 	UFUNCTION(NetMulticast, Reliable)
@@ -62,6 +87,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UArrowComponent* MyArrowComponent;
 
+	AActor* BackpackObject;
+	
 	// Character Functions
 	void Aim();
 	void StopAim();
@@ -83,8 +110,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	TArray<USkeletalMesh*> character_meshes;
 	int current_mesh_id = 0;
-
-protected:
+	
 	USkeletalMeshComponent* CharacterMeshComponent;
 
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentSkeletalMesh)
@@ -111,9 +137,9 @@ protected:
 	TSubclassOf<class ABulletActor> BulletClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
-	TSubclassOf<UUserWidget> WidgetClass;
+	TSubclassOf<UHudWidget> HudWidgetClass;
 
-	UUserWidget* WidgetInstance;
+	UHudWidget* HudWidgetInstance;
 
 public:
 	// Getter functions

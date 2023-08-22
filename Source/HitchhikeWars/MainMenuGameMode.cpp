@@ -31,6 +31,7 @@ void AMainMenuGameMode::BeginPlay()
 		if (GameManager->SteamAchievementManager)
 		{
 			GameManager->SteamAchievementManager->InitSteamAPI();
+			GameManager->SteamAchievementManager->RemoveAchievement(TEXT("LogIn_1"));
 			GameManager->SteamAchievementManager->UnlockAchievement(TEXT("LogIn_1"));
 			//bool bUnlocked = GameManager->SteamAchievementManager->IsAchievementUnlocked(TEXT("LogIn_1"));
 			//GameManager->SteamAchievementManager->ShutdownSteamAPI();

@@ -65,6 +65,9 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 
 	CurrentSkeletalMesh = GetMesh()->GetSkeletalMeshAsset();
 	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
+
+	bReplicates = true;
+	CurrentHealth = MaxHealth;
 }
 
 void ATP_ThirdPersonCharacter::BeginPlay()
@@ -86,11 +89,11 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	
 	FTransform BackpackSocketTransform = MeshComponent->GetSocketTransform(TEXT("spine_Backpack_Socket"));
 
-	AActor* SpawnedBackpack = GetWorld()->SpawnActor<AActor>(BP_Backpack, BackpackSocketTransform);
+	BackpackObject = GetWorld()->SpawnActor<AActor>(BP_Backpack, BackpackSocketTransform);
 	
-	if(SpawnedBackpack)
+	if(BackpackObject)
 	{
-		SpawnedBackpack->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("spine_Backpack_Socket"));
+		BackpackObject->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("spine_Backpack_Socket"));
 	}
 	
 	//Add Input Mapping Context
@@ -102,12 +105,12 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 		}
 	}
 
-	if (WidgetClass)
+	if (HudWidgetClass)
 	{
-		WidgetInstance = CreateWidget<UUserWidget>(GetWorld(), WidgetClass);
-		if (WidgetInstance)
+		HudWidgetInstance = CreateWidget<UHudWidget>(GetWorld(), HudWidgetClass);
+		if (HudWidgetInstance)
 		{
-			WidgetInstance->AddToViewport();
+			HudWidgetInstance->AddToViewport();
 		}
 	}
 }
@@ -201,6 +204,68 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	}
 }
 
+//
+//Health
+//
+
+void ATP_ThirdPersonCharacter::TakeHealthDamage(float DamageAmount)
+{
+	TakeHealthDamage_Server(DamageAmount);
+}
+
+void ATP_ThirdPersonCharacter::TakeHealthDamage_Server_Implementation(float DamageAmount)
+{
+	TakeHealthDamage_Multicast(DamageAmount);
+}
+
+
+void ATP_ThirdPersonCharacter::TakeHealthDamage_Multicast_Implementation(float DamageAmount)
+{
+	if (!bIsDead)
+	{
+		CurrentHealth -= DamageAmount;
+		HudWidgetInstance->UpdateHealthUI(CurrentHealth);
+		if (CurrentHealth <= 0)
+		{
+			bIsDead = true;
+			OnDeath();
+		}
+	}
+}
+
+void ATP_ThirdPersonCharacter::OnRep_IsDead()
+{
+	if (bIsDead)
+	{
+	}
+}
+
+void ATP_ThirdPersonCharacter::OnDeath()
+{
+	BackpackObject->Destroy();
+	GetMesh()->SetSimulatePhysics(true);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	DisableInput(Cast<AMyGamePlayerController>(Controller));
+	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	//GetMesh()->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+	//GetMesh()->SetOwnerNoSee(true);
+
+	// Enable physics-based camera and capsule components
+	//if (GetCapsuleComponent())
+	//{
+		//GetCapsuleComponent()->SetSimulatePhysics(true);
+	//}
+	//GetCameraBoom()->TargetArmLength = 300.0f;
+
+	// Attach physics asset to mesh (assuming it's assigned in the Character Blueprint)
+	//GetMesh()->SetPhysicsAsset(GetMesh()->SkeletalMesh->PhysicsAsset);
+	
+}
+
+//
+//Customization
+//
+
 void ATP_ThirdPersonCharacter::SetRifle()
 {
 	SetRifle_Server();
@@ -234,6 +299,7 @@ void ATP_ThirdPersonCharacter::GetLifetimeReplicatedProps(TArray< FLifetimePrope
 
 	// Replicate the CurrentSkeletalMesh variable
 	DOREPLIFETIME(ATP_ThirdPersonCharacter, CurrentSkeletalMesh);
+	DOREPLIFETIME(ATP_ThirdPersonCharacter, CurrentHealth);
 }
 
 void ATP_ThirdPersonCharacter::OnRep_CurrentSkeletalMesh()
@@ -316,8 +382,13 @@ void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
+//
+//Shooting
+//
+
 void ATP_ThirdPersonCharacter::Shoot()
 {
+	TakeHealthDamage(4);
 	//UInventoryComponent* invComp = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(this, 0))->InventoryComponent;
 	if(InventoryComponent->IfItemExists(EItemType::Rifle)){
 		if(InventoryComponent && InventoryComponent->IfItemExists(EItemType::Bullets) && bIsAimingState && BulletClass)

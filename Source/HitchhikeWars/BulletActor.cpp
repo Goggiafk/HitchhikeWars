@@ -45,6 +45,9 @@ void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* Ot
 		}
 
 		OtherActor->Destroy();
+	} else if(MyCharacter)
+	{
+		MyCharacter->TakeHealthDamage(10);
 	}
 	Destroy();
 }

@@ -22,6 +22,9 @@ public:
 	static void UnlockAchievement(const FString& AchievementName);
 
 	UFUNCTION(BlueprintCallable, Category = "Steam Achievements")
+	void RemoveAchievement(const FString& AchievementName);
+
+	UFUNCTION(BlueprintCallable, Category = "Steam Achievements")
 	static bool IsAchievementUnlocked(const FString& AchievementName);
 
 	UFUNCTION(BlueprintCallable, Category = "Steam Achievements")
