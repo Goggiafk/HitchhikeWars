@@ -13,6 +13,7 @@
 #include "Components/ArrowComponent.h"
 #include "GameFramework/GameSession.h"
 #include "HitchhikeWars/BulletActor.h"
+#include "HitchhikeWars/Car_Pawn.h"
 #include "HitchhikeWars/MyGamePlayerController.h"
 #include "HitchhikeWars/PickupActor.h"
 #include "Kismet/GameplayStatics.h"
@@ -25,7 +26,7 @@
 ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 {
 	// Set size for collision capsule
-	GetCapsuleComponent()->InitCapsuleSize(10.0f, 96.0f);
+	GetCapsuleComponent()->InitCapsuleSize(34.0f, 80.0f);
 	//GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATP_ThirdPersonCharacter::OnOverlapBegin);
 	
 	// Don't rotate when the controller rotates. Let that just affect the camera.
@@ -122,7 +123,7 @@ void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 	//UE_LOG(LogTemp, Warning, TEXT("Other object's name: %s"), OtherActor->Tags[0]);
 	if (OtherActor && OtherActor->IsA(APickupActor::StaticClass()))
 	{
-		auto PickableItem = Cast<APickupActor>(OtherActor);
+		APickupActor* PickableItem = Cast<APickupActor>(OtherActor);
 		
 		if(PickableItem)
 		{
@@ -142,6 +143,13 @@ void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 			{
 				OtherActor->Destroy();
 			}
+		}
+
+		ACar_Pawn* Car = Cast<ACar_Pawn>(OtherActor);
+		
+		if(Car)
+		{
+			TakeHealthDamage(50);
 		}
 	}
 	//OtherActor->Destroy();
@@ -237,6 +245,7 @@ void ATP_ThirdPersonCharacter::OnRep_IsDead()
 {
 	if (bIsDead)
 	{
+		
 	}
 }
 
@@ -244,22 +253,11 @@ void ATP_ThirdPersonCharacter::OnDeath()
 {
 	BackpackObject->Destroy();
 	GetMesh()->SetSimulatePhysics(true);
-	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	GetMesh()->SetCollisionObjectType(ECC_Pawn);
 	DisableInput(Cast<AMyGamePlayerController>(Controller));
-	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	//GetMesh()->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-	//GetMesh()->SetOwnerNoSee(true);
-
-	// Enable physics-based camera and capsule components
-	//if (GetCapsuleComponent())
-	//{
-		//GetCapsuleComponent()->SetSimulatePhysics(true);
-	//}
-	//GetCameraBoom()->TargetArmLength = 300.0f;
-
-	// Attach physics asset to mesh (assuming it's assigned in the Character Blueprint)
-	//GetMesh()->SetPhysicsAsset(GetMesh()->SkeletalMesh->PhysicsAsset);
-	
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetCameraBoom()->TargetArmLength = 300.0f;
 }
 
 //
@@ -388,7 +386,6 @@ void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 
 void ATP_ThirdPersonCharacter::Shoot()
 {
-	TakeHealthDamage(4);
 	//UInventoryComponent* invComp = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(this, 0))->InventoryComponent;
 	if(InventoryComponent->IfItemExists(EItemType::Rifle)){
 		if(InventoryComponent && InventoryComponent->IfItemExists(EItemType::Bullets) && bIsAimingState && BulletClass)
@@ -416,9 +413,7 @@ void ATP_ThirdPersonCharacter::Shoot_Multicast_Implementation()
 
 	if(Bullet)
 	{
-		//FVector ThrowDirection = GetShootArrow()->GetForwardVector();
-
-		//Bullet->ProjectileMovement->Velocity = ThrowDirection * Bullet->ProjectileMovement->InitialSpeed;
+		
 	}
 }
 

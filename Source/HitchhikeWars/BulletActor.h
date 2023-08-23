@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "TP_ThirdPerson/TP_ThirdPersonCharacter.h"
 #include "BulletActor.generated.h"
 
 UCLASS()
@@ -29,6 +30,13 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void BulletHit_Multicast(AActor* OtherActor, const FHitResult& Hit);
 
+	UFUNCTION(Server, Reliable)
+	void PlayerHit_Server(ATP_ThirdPersonCharacter* Character);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void PlayerHit_Multicast(ATP_ThirdPersonCharacter* Character);
+
+	
 	UPROPERTY(EditDefaultsOnly)
 	UParticleSystem* ImpactEffect;
 

@@ -17,4 +17,5 @@ public:
 	void UpdateHealthUI(int health);
 private:
 	class UTextBlock* HealthText;
+	class UProgressBar* HealthBar;
 };

@@ -44,12 +44,23 @@ void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* Ot
 			UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, Hit.ImpactPoint);
 		}
 
-		OtherActor->Destroy();
+		//OtherActor->Destroy();
 	} else if(MyCharacter)
 	{
 		MyCharacter->TakeHealthDamage(10);
 	}
 	Destroy();
+}
+
+void ABulletActor::PlayerHit_Server_Implementation(ATP_ThirdPersonCharacter* Character)
+{
+	//PlayerHit_Multicast(Character);
+	Character->TakeHealthDamage(10);
+}
+
+void ABulletActor::PlayerHit_Multicast_Implementation(ATP_ThirdPersonCharacter* Character)
+{
+	Character->TakeHealthDamage(10);
 }
 
 void ABulletActor::BulletHit_Server_Implementation(AActor* OtherActor, const FHitResult& Hit)
