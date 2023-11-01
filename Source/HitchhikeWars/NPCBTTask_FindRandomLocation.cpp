@@ -5,7 +5,9 @@
 
 #include "AIController.h"
 #include "NavigationSystem.h"
+#include "NPCAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 UNPCBTTask_FindRandomLocation::UNPCBTTask_FindRandomLocation()
 {
@@ -20,9 +22,16 @@ EBTNodeResult::Type UNPCBTTask_FindRandomLocation::ExecuteTask(UBehaviorTreeComp
 {
 	FNavLocation Location{};
 
-	AAIController* AIController {OwnerComp.GetAIOwner()};
-	const APawn* AIPawn {AIController->GetPawn()};
-
+	ANPCAIController* AIController {Cast<ANPCAIController>(OwnerComp.GetAIOwner())};
+	APawn* AIPawn = AIController->GetPawn();
+	if (AIPawn)
+	{
+		UCharacterMovementComponent* CharacterMovement = AIPawn->FindComponentByClass<UCharacterMovementComponent>();
+		if (CharacterMovement)
+		{
+			CharacterMovement->MaxWalkSpeed = WalkSpeed;
+		}
+	}
 	const FVector Origin {AIPawn->GetActorLocation()};
 
 	const UNavigationSystemV1* NavSystem {UNavigationSystemV1::GetCurrent(GetWorld())};

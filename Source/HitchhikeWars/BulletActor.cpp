@@ -2,6 +2,8 @@
 
 
 #include "BulletActor.h"
+
+#include "NpcCharacter.h"
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TP_ThirdPerson/TP_ThirdPersonCharacter.h"
@@ -31,24 +33,33 @@ ABulletActor::ABulletActor()
 void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	ATP_ThirdPersonCharacter* MyCharacter = Cast<ATP_ThirdPersonCharacter>(OtherActor);
-	if (!MyCharacter && OtherActor && OtherActor != this)
+	if (OtherActor && OtherActor->IsA(ATP_ThirdPersonCharacter::StaticClass()))
 	{
-		if(ImpactEffect)
+		ATP_ThirdPersonCharacter* MyCharacter = Cast<ATP_ThirdPersonCharacter>(OtherActor);
+		if(MyCharacter)
 		{
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, Hit.ImpactPoint, Hit.ImpactNormal.Rotation());
+			PlayerHit_Server_Implementation(MyCharacter);
 		}
-
-		if (ImpactSound)
-		{
-			UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, Hit.ImpactPoint);
-		}
-
-		//OtherActor->Destroy();
-	} else if(MyCharacter)
-	{
-		MyCharacter->TakeHealthDamage(10);
 	}
+	else if (OtherActor && OtherActor->IsA(ANpcCharacter::StaticClass()))
+	{
+		ANpcCharacter* NpcCharacter = Cast<ANpcCharacter>(OtherActor);
+		if(NpcCharacter)
+		{
+			NpcCharacter->TakeHealthDamage(50);
+		}
+	}
+	
+	if(ImpactEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, Hit.ImpactPoint, Hit.ImpactNormal.Rotation());
+	}
+
+	if (ImpactSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, Hit.ImpactPoint);
+	}
+	
 	Destroy();
 }
 
@@ -60,12 +71,15 @@ void ABulletActor::PlayerHit_Server_Implementation(ATP_ThirdPersonCharacter* Cha
 
 void ABulletActor::PlayerHit_Multicast_Implementation(ATP_ThirdPersonCharacter* Character)
 {
-	Character->TakeHealthDamage(10);
+	//Character->TakeHealthDamage(10);
 }
 
 void ABulletActor::BulletHit_Server_Implementation(AActor* OtherActor, const FHitResult& Hit)
 {
-	BulletHit_Multicast_Implementation(OtherActor, Hit);
+	if(HasAuthority())
+	{
+		BulletHit_Multicast_Implementation(OtherActor, Hit);
+	}
 }
 
 void ABulletActor::BulletHit_Multicast_Implementation(AActor* OtherActor, const FHitResult& Hit)

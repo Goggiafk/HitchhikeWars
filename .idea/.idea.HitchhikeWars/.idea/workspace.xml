@@ -10,17 +10,31 @@
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Items/Rifle_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Items/Rifle_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AI_NPC/BT_NPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AI_NPC/BT_NPC.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AI_NPC/Blueprints/NPC_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AI_NPC/Blueprints/NPC_Character.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Props/Car_Prefab.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Props/Car_Prefab.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BTTask_ChasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BTTask_ChasePlayer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWars.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCAIController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCAIController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -311,7 +325,17 @@
       <workItem from="1692030040344" duration="34450000" />
       <workItem from="1692285668530" duration="5802000" />
       <workItem from="1692306216712" duration="40499000" />
-      <workItem from="1692702230686" duration="34301000" />
+      <workItem from="1692702230686" duration="59394000" />
+      <workItem from="1693126653239" duration="17950000" />
+      <workItem from="1693292253914" duration="2986000" />
+      <workItem from="1693320341671" duration="5578000" />
+      <workItem from="1693377837123" duration="9850000" />
+      <workItem from="1693417133802" duration="6375000" />
+      <workItem from="1695797975888" duration="4739000" />
+      <workItem from="1698334410531" duration="6302000" />
+      <workItem from="1698426087003" duration="682000" />
+      <workItem from="1698481232615" duration="1070000" />
+      <workItem from="1698843813665" duration="5251000" />
     </task>
     <servers />
   </component>

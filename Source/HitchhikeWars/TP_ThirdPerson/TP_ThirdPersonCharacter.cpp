@@ -49,14 +49,14 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 900.0f; // The camera follows at this distance behind the character	
-	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
-
+	CameraBoom->TargetArmLength = 1200.0f; // The camera follows at this distance behind the character	
+	CameraBoom->bUsePawnControlRotation = true;
+	
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
-	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
-
+	FollowCamera->bUsePawnControlRotation = false;
+	
 	MyArrowComponent = CreateDefaultSubobject<UArrowComponent>(TEXT("MyArrowComponent"));
 	MyArrowComponent->SetupAttachment(RootComponent);
 	MyArrowComponent->ArrowSize = 2.0f;
@@ -121,35 +121,41 @@ void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 	
 	//UE_LOG(LogTemp, Warning, TEXT("Other object's name: %s"), OtherActor->Tags[0]);
-	if (OtherActor && OtherActor->IsA(APickupActor::StaticClass()))
+	if (OtherActor)
 	{
-		APickupActor* PickableItem = Cast<APickupActor>(OtherActor);
-		
-		if(PickableItem)
+		if(OtherActor->IsA(APickupActor::StaticClass()))
 		{
-			UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
-			ItemToAdd->Name = PickableItem->ItemName;
-			ItemToAdd->Quantity = PickableItem->ItemQuantity;
-			ItemToAdd->Icon = PickableItem->ItemIcon;
-			ItemToAdd->Type = PickableItem->ItemType;
+			APickupActor* PickableItem = Cast<APickupActor>(OtherActor);
+		
+			if(PickableItem)
+			{
+				UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
+				ItemToAdd->Name = PickableItem->ItemName;
+				ItemToAdd->Quantity = PickableItem->ItemQuantity;
+				ItemToAdd->Icon = PickableItem->ItemIcon;
+				ItemToAdd->Type = PickableItem->ItemType;
 
-			//auto InventoryComponent = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->InventoryComponent;
-			if(InventoryComponent)
-			{
-				InventoryComponent->AddItem(ItemToAdd);
-				//Controller->ToggleInventory(true);
-			}
-			if(!PickableItem->IsInfinite)
-			{
-				OtherActor->Destroy();
+				//auto InventoryComponent = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->InventoryComponent;
+				if(InventoryComponent)
+				{
+					InventoryComponent->AddItem(ItemToAdd);
+					//Controller->ToggleInventory(true);
+				}
+				if(!PickableItem->IsInfinite)
+				{
+					OtherActor->Destroy();
+				}
 			}
 		}
 
-		ACar_Pawn* Car = Cast<ACar_Pawn>(OtherActor);
-		
-		if(Car)
+		if(OtherActor->IsA(ACar_Pawn::StaticClass()))
 		{
-			TakeHealthDamage(50);
+			ACar_Pawn* Car = Cast<ACar_Pawn>(OtherActor);
+		
+			if(Car)
+			{
+				TakeHealthDamage(50);
+			}
 		}
 	}
 	//OtherActor->Destroy();
@@ -251,6 +257,10 @@ void ATP_ThirdPersonCharacter::OnRep_IsDead()
 
 void ATP_ThirdPersonCharacter::OnDeath()
 {
+	//CameraBoom->bInheritYaw = false;
+	//CameraBoom->bInheritPitch = false;
+	//CameraBoom->bInheritRoll = false;
+	FollowCamera->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
 	BackpackObject->Destroy();
 	GetMesh()->SetSimulatePhysics(true);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -258,6 +268,7 @@ void ATP_ThirdPersonCharacter::OnDeath()
 	DisableInput(Cast<AMyGamePlayerController>(Controller));
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	GetCameraBoom()->TargetArmLength = 300.0f;
+	
 }
 
 //
@@ -383,7 +394,7 @@ void ATP_ThirdPersonCharacter::Move(const FInputActionValue& Value)
 //
 //Shooting
 //
-
+ 
 void ATP_ThirdPersonCharacter::Shoot()
 {
 	//UInventoryComponent* invComp = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(this, 0))->InventoryComponent;

@@ -5,6 +5,7 @@ ACar_Pawn::ACar_Pawn()
 {
 	SkeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMeshComponent"));
 	SetRootComponent(SkeletalMeshComponent);
+	SkeletalMeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	PrimaryActorTick.bCanEverTick = true;
 }
 

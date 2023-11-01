@@ -46,5 +46,7 @@ void UInventoryItemWidget::OnButtonClicked()
 		case EItemType::Rifle:
 			Cast<ATP_ThirdPersonCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->SetRifle();
 			break;
+
+		Cast<AMyGamePlayerController>(Cast<ATP_ThirdPersonCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->Controller)->ToggleInventory();
 	}
 }

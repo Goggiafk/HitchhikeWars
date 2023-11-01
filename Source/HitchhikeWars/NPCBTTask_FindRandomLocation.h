@@ -23,5 +23,8 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Search", meta = (AllowPrivateAccess = true))
 	float WalkRadius = 500;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Walking", meta = (AllowPrivateAccess = true))
+	float WalkSpeed = 500;
 	
 };

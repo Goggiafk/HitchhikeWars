@@ -18,8 +18,31 @@ void UHudWidget::UpdateHealthUI(int health)
 
 	if(HealthBar)
 	{
-		float percentage = health;
-		UE_LOG(LogTemp, Warning, TEXT("prog is %d"), percentage);
-		HealthBar->SetPercent(percentage);
+		float NormalizedHealth = FMath::Clamp(static_cast<float>(health)/100, 0.0f, 1.0f);
+		HealthBar->SetPercent(NormalizedHealth);
+		if(health <= 0)
+		{
+			HealthBar->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
+}
+
+void UHudWidget::IncreaseReadyCount(bool authority)
+{
+	ReadyCount1 = Cast<UTextBlock>(GetWidgetFromName("ReadyCount1"));
+	if(authority){
+		Count++;
+		if(ReadyCount1)
+		{
+			ReadyCount1->SetText(FText::FromString(FString::FromInt(Count)));
+		}
+		if(Count == 4)
+		{
+			ReadyCount1->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
+	else
+	{
+		ReadyCount1->SetVisibility(ESlateVisibility::Hidden);
 	}
 }

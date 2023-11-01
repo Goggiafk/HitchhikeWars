@@ -16,7 +16,6 @@ APickupActor::APickupActor()
 	
 	CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionComponent"));
 	CollisionComponent->SetSphereRadius(50.0f);
-	CollisionComponent->OnComponentBeginOverlap.AddDynamic(this, &APickupActor::OnPlayerEnterPickupArea);
 	RootComponent = CollisionComponent;
 	
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
@@ -37,16 +36,6 @@ void APickupActor::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	FRotator NewRotation = MeshComponent->GetComponentRotation() + FRotator(0.0f, RotationSpeed * DeltaSeconds, 0.0f);
 	MeshComponent->SetWorldRotation(NewRotation);
-}
-
-void APickupActor::OnPlayerEnterPickupArea(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
-                                           UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	ATP_ThirdPersonCharacter* MyCharacter = Cast<ATP_ThirdPersonCharacter>(OtherActor);
-	if (MyCharacter && OtherActor && OtherActor != this)
-	{
-		
-	}
 }
 
 

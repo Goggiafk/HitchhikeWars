@@ -50,12 +50,12 @@ void AMyGamePlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("ToggleInGameMenu", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMenu);
 	InputComponent->BindAction("ToggleInGameMap", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMap);
-	InputComponent->BindAction("ToggleInGameInventory", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameInventory);
+	InputComponent->BindAction("ToggleInGameInventory", IE_Pressed, this, &AMyGamePlayerController::ToggleInventory);
 }
 
 void AMyGamePlayerController::ToggleInGameMenu()
 {
-	if (InGameMenuWidgetClass && !IsAnyWidgetOpen)
+	if (InGameMenuWidgetClass)
 	{
 		ToggleWidget(InGameMenuWidget, InGameMenuWidgetClass, IsMenuOpen);
 	}
@@ -63,37 +63,48 @@ void AMyGamePlayerController::ToggleInGameMenu()
 
 void AMyGamePlayerController::ToggleInGameMap()
 {
-	if (MapWidgetClass && !IsAnyWidgetOpen)
+	if (MapWidgetClass)
 	{
 		ToggleWidget(MapWidget, MapWidgetClass, IsMapOpen);
 	}
 }
 
-void AMyGamePlayerController::ToggleInventory(bool DetectIfOpen)
-{
-	//ToggleInGameInventory();
-	bShowMouseCursor = false;
-	InventoryWidget->RemoveFromParent();
-}
 
 
-void AMyGamePlayerController::ToggleInGameInventory()
+void AMyGamePlayerController::ToggleInventory()
 {
-	if(InventoryWidgetClass && !IsAnyWidgetOpen && InventoryComponent)
+	if (InventoryWidgetClass)
 	{
-		//UInventoryItem* TestItem = NewObject<UInventoryItem>();
-		// TestItem->Name = "Sex";
-		// TestItem->Quantity = 1;
-		// InventoryComponent->AddItem(TestItem);
-		TArray<UInventoryItem*> InventoryItems = Cast<ATP_ThirdPersonCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->InventoryComponent->GetInventoryItems(); // Assuming you have a function to get inventory items
+		ACharacter* PlayerCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
+		if(PlayerCharacter)
+		{
+			TArray<UInventoryItem*> InventoryItems = Cast<ATP_ThirdPersonCharacter>(PlayerCharacter)->InventoryComponent->GetInventoryItems(); 
+		
+			ToggleWidget(InventoryWidget, InventoryWidgetClass, IsInventoryOpen);
 
-		ToggleWidget(InventoryWidget, InventoryWidgetClass, IsInventoryOpen);
-
-		UInventoryWidget* InventoryWidgetInv = Cast<UInventoryWidget>(InventoryWidget);
-		InventoryWidgetInv->SetInventoryItems(InventoryItems);
-		//FString ItemName = InventoryComponent->GetInventoryItems()[0]->Name;
+			if(InventoryItems.IsValidIndex(0) && InventoryWidget)
+			{
+				UInventoryWidget* InventoryWidgetInv = Cast<UInventoryWidget>(InventoryWidget);
+				InventoryWidgetInv->SetInventoryItems(InventoryItems);
+			}
+		}
 	}
 }
+
+// void AMyGamePlayerController::ToggleInGameInventory()
+// {
+// 	if(InventoryWidgetClass && !IsAnyWidgetOpen && InventoryComponent)
+// 	{
+// 		TArray<UInventoryItem*> InventoryItems = Cast<ATP_ThirdPersonCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->InventoryComponent->GetInventoryItems(); // Assuming you have a function to get inventory items
+//
+// 		ToggleWidget(InventoryWidget, InventoryWidgetClass, IsInventoryOpen);
+//
+// 		UInventoryWidget* InventoryWidgetInv = Cast<UInventoryWidget>(InventoryWidget);
+// 		InventoryWidgetInv->SetInventoryItems(InventoryItems);
+//	}
+//}
+
+UUserWidget* CurrentlyOpenWidget = nullptr;
 
 void AMyGamePlayerController::ToggleWidget(UUserWidget*& Widget, TSubclassOf<UUserWidget> WidgetClass, bool& bIsOpen)
 {
@@ -104,15 +115,24 @@ void AMyGamePlayerController::ToggleWidget(UUserWidget*& Widget, TSubclassOf<UUs
 
 	if (Widget)
 	{
+		if (CurrentlyOpenWidget && CurrentlyOpenWidget != Widget)
+		{
+			bShowMouseCursor = false;
+			CurrentlyOpenWidget->RemoveFromParent();
+			CurrentlyOpenWidget = nullptr;
+		}
+		
 		if (bIsOpen)
 		{
 			bShowMouseCursor = false;
 			Widget->RemoveFromParent();
+			CurrentlyOpenWidget = nullptr;
 		}
 		else
 		{
 			bShowMouseCursor = true;
 			Widget->AddToViewport();
+			CurrentlyOpenWidget = Widget;
 		}
 
 		bIsOpen = !bIsOpen;

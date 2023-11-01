@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/Pawn.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Car_Pawn.generated.h"
@@ -24,7 +25,7 @@ protected:
 
 	UPROPERTY(ReplicatedUsing = OnRep_SetPosition)
 	FVector Position;
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Mesh")
 	USkeletalMeshComponent* SkeletalMeshComponent;
 

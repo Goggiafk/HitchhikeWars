@@ -15,7 +15,10 @@ class HITCHHIKEWARS_API UHudWidget : public UUserWidget
 	GENERATED_BODY()
 public:
 	void UpdateHealthUI(int health);
+	void IncreaseReadyCount(bool authority);
 private:
+	int Count = 0;
 	class UTextBlock* HealthText;
 	class UProgressBar* HealthBar;
+	class UTextBlock* ReadyCount1;
 };

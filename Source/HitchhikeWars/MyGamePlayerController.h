@@ -29,8 +29,8 @@ class HITCHHIKEWARS_API AMyGamePlayerController : public APlayerController
 
 	UInventoryComponent* InventoryComponent;
 
-	void ToggleInventory(bool DetectIfOpen);
-
+	void ToggleInventory();
+	
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -72,7 +72,6 @@ protected:
 	// Input Actions
 	void ToggleInGameMenu();
 	void ToggleInGameMap();
-	void ToggleInGameInventory();
 
 	// Toggle Widget Function
 	UFUNCTION(BlueprintCallable, Category = "Widgets")

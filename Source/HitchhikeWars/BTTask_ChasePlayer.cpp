@@ -4,6 +4,7 @@
 #include "BTTask_ChasePlayer.h"
 
 #include "AIController.h"
+#include "NPCAIController.h"
 #include "NpcCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -13,13 +14,14 @@ UBTTask_ChasePlayer::UBTTask_ChasePlayer()
 {
 	NodeName = TEXT("Chase Player");
 
-	BlackboardKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(
-		UBTTask_ChasePlayer, BlackboardKey));
+	//BlackboardKey.AddVectorFilter(this, GET_MEMBER_NAME_CHECKED(
+	//	UBTTask_ChasePlayer, BlackboardKey));
+	
 }
 
 EBTNodeResult::Type UBTTask_ChasePlayer::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	AAIController* AIController {OwnerComp.GetAIOwner()};
+	ANPCAIController* AIController {Cast<ANPCAIController>(OwnerComp.GetAIOwner())};
 	APawn* AIPawn = AIController->GetPawn();
 	if (AIPawn)
 	{
@@ -31,14 +33,19 @@ EBTNodeResult::Type UBTTask_ChasePlayer::ExecuteTask(UBehaviorTreeComponent& Own
 	}
 	if (AIController)
 	{
-		// Get the player character
-		ACharacter* PlayerCharacter {UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)};
-		if (PlayerCharacter)
+		ANpcCharacter* NpcCharacter = Cast<ANpcCharacter>(AIPawn);
+
+		if(NpcCharacter)
 		{
-			// Move towards the player's location
-			FVector PlayerLocation {PlayerCharacter->GetActorLocation()};
-			AIController->MoveToLocation(PlayerLocation);
-			return EBTNodeResult::Succeeded;
+			ACharacter* PlayerCharacter{NpcCharacter->ChasedPlayer};
+			//UE_LOG(LogTemp, Warning, TEXT("Sex: &s"), PlayerCharacter->GetActorLocation())
+			if (PlayerCharacter)
+			{
+				// Move towards the player's location
+				//FVector PlayerLocation {PlayerCharacter->GetActorLocation()};
+				AIController->MoveToLocation(PlayerCharacter->GetActorLocation());
+				return EBTNodeResult::Succeeded;
+			}
 		}
 	}
 
