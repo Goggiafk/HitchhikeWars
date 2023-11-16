@@ -10,32 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AI_NPC/BT_NPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AI_NPC/BT_NPC.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AI_NPC/Blueprints/NPC_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AI_NPC/Blueprints/NPC_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Props/Car_Prefab.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Props/Car_Prefab.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/InGameMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Inventory/InventoryWidget_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BTTask_ChasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BTTask_ChasePlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/BulletActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Car_Pawn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/InventoryItemWidget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NPCBTTask_FindRandomLocation.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/NpcCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/PickupActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CarStop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/CarStop.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
