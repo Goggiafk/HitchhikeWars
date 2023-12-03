@@ -11,6 +11,23 @@
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/CarStop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/CarStop.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CarStop_Mapping.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameManagers/MyGamePlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameManagers/MyGamePlayerController_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/IA_EnterCarStop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/IA_ExitCarStop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Level_0.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level_0.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Props/BP_NPC_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Props/BP_NPC_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HudWidget.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu_GM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HitchhikeWars.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/HitchhikeWars.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HudWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/MyGamePlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,6 +328,8 @@
       <workItem from="1698426087003" duration="682000" />
       <workItem from="1698481232615" duration="1070000" />
       <workItem from="1698843813665" duration="5251000" />
+      <workItem from="1701537698382" duration="2972000" />
+      <workItem from="1701630090169" duration="3420000" />
     </task>
     <servers />
   </component>

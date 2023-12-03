@@ -15,7 +15,7 @@ void UHudWidget::UpdateHealthUI(int health)
 	{
 		HealthText->SetText(FText::FromString(FString::FromInt(health)));
 	}
-
+	
 	if(HealthBar)
 	{
 		float NormalizedHealth = FMath::Clamp(static_cast<float>(health)/100, 0.0f, 1.0f);
@@ -27,22 +27,23 @@ void UHudWidget::UpdateHealthUI(int health)
 	}
 }
 
-void UHudWidget::IncreaseReadyCount(bool authority)
+void UHudWidget::UpdateSleepUI(int SleepPoints)
 {
-	ReadyCount1 = Cast<UTextBlock>(GetWidgetFromName("ReadyCount1"));
-	if(authority){
-		Count++;
-		if(ReadyCount1)
-		{
-			ReadyCount1->SetText(FText::FromString(FString::FromInt(Count)));
-		}
-		if(Count == 4)
-		{
-			ReadyCount1->SetVisibility(ESlateVisibility::Hidden);
-		}
-	}
-	else
+	SleepText = Cast<UTextBlock>(GetWidgetFromName("SleepText"));
+	SleepBar = Cast<UProgressBar>(GetWidgetFromName("SleepBar"));
+
+	if(SleepText)
 	{
-		ReadyCount1->SetVisibility(ESlateVisibility::Hidden);
+		SleepText->SetText(FText::FromString(FString::FromInt(SleepPoints)));
+	}
+
+	if(SleepBar)
+	{
+		float NormalizedSleep = FMath::Clamp(static_cast<float>(SleepPoints)/100, 0.0f, 1.0f);
+		SleepBar->SetPercent(NormalizedSleep);
+		if(SleepPoints <= 0)
+		{
+			SleepBar->SetVisibility(ESlateVisibility::Hidden);
+		}
 	}
 }

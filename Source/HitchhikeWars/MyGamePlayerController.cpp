@@ -15,7 +15,7 @@
 AMyGamePlayerController::AMyGamePlayerController()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
+	//InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
 }
 
 void AMyGamePlayerController::BeginPlay()
@@ -48,9 +48,9 @@ void AMyGamePlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("ToggleInGameMenu", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMenu);
-	InputComponent->BindAction("ToggleInGameMap", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMap);
-	InputComponent->BindAction("ToggleInGameInventory", IE_Pressed, this, &AMyGamePlayerController::ToggleInventory);
+	//InputComponent->BindAction("ToggleInGameMenu", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMenu);
+	//InputComponent->BindAction("ToggleInGameMap", IE_Pressed, this, &AMyGamePlayerController::ToggleInGameMap);
+	//InputComponent->BindAction("ToggleInGameInventory", IE_Pressed, this, &AMyGamePlayerController::ToggleInventory);
 }
 
 void AMyGamePlayerController::ToggleInGameMenu()

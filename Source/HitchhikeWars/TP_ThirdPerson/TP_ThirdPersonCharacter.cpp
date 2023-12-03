@@ -69,6 +69,7 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 
 	bReplicates = true;
 	CurrentHealth = MaxHealth;
+	CurrentSleepLevel = 50;
 }
 
 void ATP_ThirdPersonCharacter::BeginPlay()
@@ -108,12 +109,14 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 
 	if (HudWidgetClass)
 	{
-		HudWidgetInstance = CreateWidget<UHudWidget>(GetWorld(), HudWidgetClass);
+		
+		//HudWidgetInstance = CreateWidget<UHudWidget>(GetWorld(), HudWidgetClass);
 		if (HudWidgetInstance)
 		{
-			HudWidgetInstance->AddToViewport();
+			//HudWidgetInstance->AddToViewport();
 		}
 	}
+	//HudWidgetInstance->UpdateSleepUI(CurrentSleepLevel);
 }
 
 void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
@@ -154,7 +157,7 @@ void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 		
 			if(Car)
 			{
-				TakeHealthDamage(50);
+				//TakeHealthDamage(50);
 			}
 		}
 	}
@@ -222,18 +225,18 @@ void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 //Health
 //
 
-void ATP_ThirdPersonCharacter::TakeHealthDamage(float DamageAmount)
+void ATP_ThirdPersonCharacter::TakeHealthDamage(int DamageAmount)
 {
 	TakeHealthDamage_Server(DamageAmount);
 }
 
-void ATP_ThirdPersonCharacter::TakeHealthDamage_Server_Implementation(float DamageAmount)
+void ATP_ThirdPersonCharacter::TakeHealthDamage_Server_Implementation(int DamageAmount)
 {
 	TakeHealthDamage_Multicast(DamageAmount);
 }
 
 
-void ATP_ThirdPersonCharacter::TakeHealthDamage_Multicast_Implementation(float DamageAmount)
+void ATP_ThirdPersonCharacter::TakeHealthDamage_Multicast_Implementation(int DamageAmount)
 {
 	if (!bIsDead)
 	{
@@ -252,6 +255,20 @@ void ATP_ThirdPersonCharacter::OnRep_IsDead()
 	if (bIsDead)
 	{
 		
+	}
+}
+
+void ATP_ThirdPersonCharacter::SleepAndRest(int SleepPoints)
+{
+	if (!bIsDead)
+	{
+		CurrentSleepLevel += SleepPoints;
+		HudWidgetInstance->UpdateSleepUI(CurrentSleepLevel);
+		if (CurrentSleepLevel <= 0)
+		{
+			bIsDead = true;
+			OnDeath();
+		}
 	}
 }
 

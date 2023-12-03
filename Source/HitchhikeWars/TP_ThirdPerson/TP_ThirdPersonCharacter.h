@@ -22,22 +22,22 @@ public:
 	ATP_ThirdPersonCharacter();
 
 	UInventoryComponent* InventoryComponent;
-	void TakeHealthDamage(float DamageAmount);
+	void TakeHealthDamage(int DamageAmount);
 
 	void SetRifle();
 	
 protected:
 
 	UFUNCTION(Server, Reliable)
-	void TakeHealthDamage_Server(float DamageAmount);
+	void TakeHealthDamage_Server(int DamageAmount);
 	UFUNCTION(NetMulticast, Reliable)
-	void TakeHealthDamage_Multicast(float DamageAmount);
+	void TakeHealthDamage_Multicast(int DamageAmount);
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float MaxHealth = 100.0f;
+	int MaxHealth = 100.0f;
 
 	UPROPERTY(Replicated, BlueprintReadOnly)
-	float CurrentHealth;
+	int CurrentHealth;
 
 	UPROPERTY(ReplicatedUsing = OnRep_IsDead)
 	bool bIsDead;
@@ -45,6 +45,14 @@ protected:
 	UFUNCTION()
 	void OnRep_IsDead();
 
+	//SLEEP
+
+	UPROPERTY(Replicated, BlueprintReadWrite)
+	int CurrentSleepLevel;
+
+	UFUNCTION(BlueprintCallable)
+	void SleepAndRest(int SleepPoints);
+	
 	//UFUNCTION(BlueprintImplementableEvent)
 	void OnDeath();
 	
