@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/ArrowComponent.h"
+#include "Engine/StaticMeshActor.h"
 #include "GameFramework/GameSession.h"
 #include "HitchhikeWars/BulletActor.h"
 #include "HitchhikeWars/Car_Pawn.h"
@@ -18,6 +19,7 @@
 #include "HitchhikeWars/PickupActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
+#include "PickUps/PickUp.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -25,6 +27,7 @@
 
 ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter()
 {
+	MeshComponent = GetMesh();
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(34.0f, 80.0f);
 	//GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &ATP_ThirdPersonCharacter::OnOverlapBegin);
@@ -77,7 +80,7 @@ void ATP_ThirdPersonCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 	
-	USkeletalMeshComponent* MeshComponent = GetMesh();
+	
 	if(!MeshComponent)
 	{
 		return;
@@ -124,44 +127,28 @@ void ATP_ThirdPersonCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 	
 	//UE_LOG(LogTemp, Warning, TEXT("Other object's name: %s"), OtherActor->Tags[0]);
-	if (OtherActor)
+	if(OtherActor->IsA(APickupActor::StaticClass()))
 	{
-		if(OtherActor->IsA(APickupActor::StaticClass()))
-		{
-			APickupActor* PickableItem = Cast<APickupActor>(OtherActor);
+		APickupActor* PickableItem = Cast<APickupActor>(OtherActor);
 		
-			if(PickableItem)
-			{
-				UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
-				ItemToAdd->Name = PickableItem->ItemName;
-				ItemToAdd->Quantity = PickableItem->ItemQuantity;
-				ItemToAdd->Icon = PickableItem->ItemIcon;
-				ItemToAdd->Type = PickableItem->ItemType;
+		UInventoryItem* ItemToAdd = NewObject<UInventoryItem>();
+		ItemToAdd->Name = PickableItem->ItemName;
+		ItemToAdd->Quantity = PickableItem->ItemQuantity;
+		ItemToAdd->Icon = PickableItem->ItemIcon;
+		ItemToAdd->Type = PickableItem->ItemType;
 
-				//auto InventoryComponent = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->InventoryComponent;
-				if(InventoryComponent)
-				{
-					InventoryComponent->AddItem(ItemToAdd);
-					//Controller->ToggleInventory(true);
-				}
-				if(!PickableItem->IsInfinite)
-				{
-					OtherActor->Destroy();
-				}
-			}
-		}
-
-		if(OtherActor->IsA(ACar_Pawn::StaticClass()))
+		//auto InventoryComponent = Cast<AMyGamePlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0))->InventoryComponent;
+		if(InventoryComponent)
 		{
-			ACar_Pawn* Car = Cast<ACar_Pawn>(OtherActor);
-		
-			if(Car)
-			{
-				//TakeHealthDamage(50);
-			}
+			InventoryComponent->AddItem(ItemToAdd);
+			//Controller->ToggleInventory(true);
 		}
+		if(!PickableItem->IsInfinite)
+		{
+			OtherActor->Destroy();
+		}
+		return;
 	}
-	//OtherActor->Destroy();
 }
 
 // void ATP_ThirdPersonCharacter::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp,
@@ -304,7 +291,7 @@ void ATP_ThirdPersonCharacter::SetRifle_Server_Implementation()
 
 void ATP_ThirdPersonCharacter::SetRifler_Multicast_Implementation()
 {
-	USkeletalMeshComponent* MeshComponent = GetMesh();
+	//USkeletalMeshComponent* MeshComponent = GetMesh();
 	if(!MeshComponent)
 	{
 		return;
@@ -470,6 +457,33 @@ void ATP_ThirdPersonCharacter::Aim_Multicast_Implementation(bool state)
 void ATP_ThirdPersonCharacter::OnRep_CurrentAimState(bool state)
 {
 	bIsAimingState = state;
+}
+
+void ATP_ThirdPersonCharacter::Carry(bool State)
+{
+	bIsCarryingState = State;
+
+	if(State)
+	{
+		FTransform BoxSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Crate_Socket"));
+
+		HoldItem = GetWorld()->SpawnActor<AStaticMeshActor>(AStaticMeshActor::StaticClass());
+		HoldItem->SetMobility(EComponentMobility::Movable);
+		HoldItem->SetActorEnableCollision(false);
+		CarryItemMesh = HoldItem->GetStaticMeshComponent();
+		if (CarryItemMesh)
+		{
+			CarryItemMesh->SetStaticMesh(CarryBox);
+			CarryItemMesh->AttachToComponent(MeshComponent, FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("hand_r_Crate_Socket"));
+		}
+	}
+	else
+	{
+		if(CarryItemMesh)
+		{
+			CarryItemMesh->DestroyComponent();
+		}
+	}
 }
 
 

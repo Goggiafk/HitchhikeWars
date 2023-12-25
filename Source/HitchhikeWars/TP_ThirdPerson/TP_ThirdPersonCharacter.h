@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "Blueprint/UserWidget.h"
+#include "Engine/StaticMeshActor.h"
 #include "HitchhikeWars/HudWidget.h"
 #include "HitchhikeWars/InventoryComponent.h"
 #include "TP_ThirdPersonCharacter.generated.h"
@@ -25,9 +26,19 @@ public:
 	void TakeHealthDamage(int DamageAmount);
 
 	void SetRifle();
+
+	void Carry(bool State);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* CarryBox;
+
+	USkeletalMeshComponent* MeshComponent;
+
+	AStaticMeshActor* HoldItem;
+	UStaticMeshComponent* CarryItemMesh;
 	
 protected:
-
+	
 	UFUNCTION(Server, Reliable)
 	void TakeHealthDamage_Server(int DamageAmount);
 	UFUNCTION(NetMulticast, Reliable)
@@ -91,6 +102,9 @@ protected:
 	// Character Properties
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_CurrentAimState, Category = AnimationParameters)
 	bool bIsAimingState;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AnimationParameters)
+	bool bIsCarryingState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UArrowComponent* MyArrowComponent;

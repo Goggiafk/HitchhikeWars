@@ -20,9 +20,9 @@ AHitchhikeWarsGameMode::AHitchhikeWarsGameMode()
 void AHitchhikeWarsGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	SpawnCar();
-	FTimerHandle UnusedHandle;
-	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(3, spawnDelay), true);
+	//SpawnCar();
+	//FTimerHandle UnusedHandle;
+	//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AHitchhikeWarsGameMode::SpawnCar, FMath::RandRange(3, spawnDelay), true);
 }
 
 void AHitchhikeWarsGameMode::StartPlay()
