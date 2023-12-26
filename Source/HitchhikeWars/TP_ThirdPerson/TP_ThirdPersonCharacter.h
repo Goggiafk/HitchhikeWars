@@ -8,6 +8,7 @@
 #include "Engine/StaticMeshActor.h"
 #include "HitchhikeWars/HudWidget.h"
 #include "HitchhikeWars/InventoryComponent.h"
+#include "PickUps/PickUp.h"
 #include "TP_ThirdPersonCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -28,6 +29,13 @@ public:
 	void SetRifle();
 
 	void Carry(bool State);
+	UFUNCTION(Server, Reliable)
+	void Carry_Server(bool state);
+	UFUNCTION(NetMulticast, Reliable)
+	void Carry_Multicast(bool state);
+
+	UFUNCTION()
+	void OnRep_CurrentCarryState(bool state);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh* CarryBox;
@@ -36,6 +44,8 @@ public:
 
 	AStaticMeshActor* HoldItem;
 	UStaticMeshComponent* CarryItemMesh;
+
+	ResourceType HeldResource;
 	
 protected:
 	

@@ -9,31 +9,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fde758a8-6785-43d3-95d8-8819681ebe48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_Compile.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_Export.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_ExportDialogueScript.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_Gather.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_GenerateReports.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_Import.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_ImportDialogue.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Localization/Game_ImportDialogueScript.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Buildings/BP_Wall.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Maps/GeneratorLevel.umap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Private/Buildings/BuildingActor.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Public/Buildings/BuildingActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HitchhikeWars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_15.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/Characters/SK_citizen_female_15.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/StreetProps/SM_box.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/StreetProps/SM_box.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/StreetProps/SM_shed_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetsvilleTown/Meshes/StreetProps/SM_shed_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/ABP_LowPolyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/ABP_LowPolyCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_Run_Aiming.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/Animations/LPC_MM_Walk_Run_Aiming.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/LowPolyMen/Animations/SkeletonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LowPolyMen/Animations/SkeletonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Mixamo/NewIKRetargeter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP_Fuel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP_Fuel.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Core/BP_Generator.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Core/BP_Generator.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameManagers/BP_HitchhikeWarsGameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameManagers/BP_HitchhikeWarsGameInstance.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameManagers/HitchhikeWars_GM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameManagers/HitchhikeWars_GM.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/GameManagers/MyGamePlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/GameManagers/MyGamePlayerController_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/GeneratorLevel.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/GeneratorLevel.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/HitchhikeWarsGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Private/Generator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Private/Generator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Private/PickUps/PickUp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Private/PickUps/PickUp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Public/Generator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Public/Generator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/Public/PickUps/PickUp.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/Public/PickUps/PickUp.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/HitchhikeWars/TP_ThirdPerson/TP_ThirdPersonCharacter.h" afterDir="false" />
     </list>
@@ -340,7 +329,10 @@
       <workItem from="1701630090169" duration="3420000" />
       <workItem from="1703341783690" duration="2058000" />
       <workItem from="1703417223277" duration="1099000" />
-      <workItem from="1703514170929" duration="6542000" />
+      <workItem from="1703514170929" duration="8253000" />
+      <workItem from="1703585830479" duration="6367000" />
+      <workItem from="1703614066061" duration="796000" />
+      <workItem from="1703615295800" duration="3760000" />
     </task>
     <servers />
   </component>

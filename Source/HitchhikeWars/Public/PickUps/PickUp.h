@@ -38,6 +38,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* MeshComponent;
 
+	UPROPERTY(EditAnywhere)
+	TArray<UStaticMesh*> Meshes;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

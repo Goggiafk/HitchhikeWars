@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Car_Pawn.h"
 #include "GameFramework/GameModeBase.h"
+#include "PickUps/PickUp.h"
 #include "HitchhikeWarsGameMode.generated.h"
 
 UCLASS(minimalapi)
@@ -17,8 +18,9 @@ class AHitchhikeWarsGameMode : public AGameModeBase
 	virtual void Tick(float DeltaSeconds) override;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<APawn> CarPrefab;
+	TSubclassOf<APickUp> PickUpPrefab;
 
+	UPROPERTY(EditAnywhere)
 	float Spawn_Z = 0.0f;
 	
 	UPROPERTY(EditAnywhere)

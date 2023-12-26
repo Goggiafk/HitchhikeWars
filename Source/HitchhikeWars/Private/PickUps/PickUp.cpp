@@ -24,6 +24,13 @@ APickUp::APickUp()
 void APickUp::BeginPlay()
 {
 	Super::BeginPlay();
+
+	switch (CurrentType)
+	{
+	case ResourceType::Fuel:
+		MeshComponent->SetStaticMesh(Meshes[0]);
+		break;
+	}
 }
 
 // Called every frame
@@ -41,9 +48,10 @@ void APickUp::NotifyActorBeginOverlap(AActor* OtherActor)
 	{
 		ATP_ThirdPersonCharacter* ThirdPerson = Cast<ATP_ThirdPersonCharacter>(OtherActor);
 
-		if(CurrentType == ResourceType::Fuel)
+		if(CurrentType == ResourceType::Fuel && ThirdPerson->HeldResource == ResourceType::None)
 		{
 			ThirdPerson->Carry(true);
+			ThirdPerson->HeldResource = CurrentType;
 			Destroy();
 		}
 		return;

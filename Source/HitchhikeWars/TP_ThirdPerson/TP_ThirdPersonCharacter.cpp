@@ -459,11 +459,21 @@ void ATP_ThirdPersonCharacter::OnRep_CurrentAimState(bool state)
 	bIsAimingState = state;
 }
 
-void ATP_ThirdPersonCharacter::Carry(bool State)
+void ATP_ThirdPersonCharacter::Carry(bool state)
 {
-	bIsCarryingState = State;
+	
+	//bIsCarryingState = state;
+	Carry_Multicast(state);
+}
 
-	if(State)
+void ATP_ThirdPersonCharacter::Carry_Server_Implementation(bool state)
+{
+	Carry_Multicast_Implementation(state);
+}
+
+void ATP_ThirdPersonCharacter::Carry_Multicast_Implementation(bool state)
+{
+	if(state)
 	{
 		FTransform BoxSocketTransform = MeshComponent->GetSocketTransform(TEXT("hand_r_Crate_Socket"));
 
@@ -481,9 +491,17 @@ void ATP_ThirdPersonCharacter::Carry(bool State)
 	{
 		if(CarryItemMesh)
 		{
+			HeldResource = ResourceType::None;
 			CarryItemMesh->DestroyComponent();
 		}
 	}
+	
+	OnRep_CurrentCarryState(state);
+}
+
+void ATP_ThirdPersonCharacter::OnRep_CurrentCarryState(bool state)
+{
+	bIsCarryingState = state;
 }
 
 
